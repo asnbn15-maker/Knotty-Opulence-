@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knotty Opulence Hair Care Studio | Mérida, México</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF7F2;
+    --deep-brown: #2C1810;
+    --rich-brown: #4A2C1A;
+    --terracotta: #C4622D;
+    --gold: #B8922A;
+    --sage: #6B7C5C;
+    --dark-sage: #4A5940;
+    --muted-gold: #D4A853;
+    --text-dark: #1A1208;
+    --text-mid: #3D2B1A;
+    --text-light: #7A6355;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  .hero {
+    min-height: 100vh;
+    background: var(--deep-brown);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(180,100,40,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(107,124,92,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--muted-gold));
+    margin: 0 auto 32px;
+    animation: fadeDown 1.2s ease forwards;
+    opacity: 0;
+  }
+  .hero-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted-gold);
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease 0.3s forwards;
+    opacity: 0;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 300;
+    line-height: 0.92;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+    animation: fadeUp 1s ease 0.5s forwards;
+    opacity: 0;
+    margin-bottom: 12px;
+  }
+  .hero h1 em { font-style: italic; color: var(--muted-gold); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    margin-top: 20px;
+    animation: fadeUp 1s ease 0.7s forwards;
+    opacity: 0;
+    letter-spacing: 0.02em;
+  }
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--muted-gold), transparent);
+    margin: 36px auto;
+    animation: fadeUp 1s ease 0.9s forwards;
+    opacity: 0;
+  }
+  .hero-tagline {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    animation: fadeUp 1s ease 1.1s forwards;
+    opacity: 0;
+  }
+  .hero-cta {
+    margin-top: 52px;
+    animation: fadeUp 1s ease 1.3s forwards;
+    opacity: 0;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--terracotta);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--rich-brown);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-secondary {
+    display: inline-block;
+    padding: 15px 48px;
+    border: 1px solid rgba(245,240,232,0.3);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-left: 16px;
+    transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { border-color: var(--muted-gold); color: var(--muted-gold); }
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(245,240,232,0.3);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease 1.8s forwards;
+    opacity: 0;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(245,240,232,0.3), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+  section { padding: 100px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .container-narrow { max-width: 720px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .intro-strip {
+    background: var(--rich-brown);
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .intro-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 30px);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .intro-strip p strong { color: var(--muted-gold); font-style: normal; font-weight: 400; }
+  .serve-section { background: var(--warm-white); }
+  .serve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 60px;
+  }
+  .serve-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--deep-brown);
+    margin-bottom: 28px;
+  }
+  .serve-text h2 em { font-style: italic; color: var(--terracotta); }
+  .serve-text p { color: var(--text-mid); line-height: 1.9; font-size: 15px; margin-bottom: 20px; }
+  .serve-cards { display: flex; flex-direction: column; gap: 20px; }
+  .serve-card {
+    padding: 28px 32px;
+    border-left: 2px solid var(--muted-gold);
+    background: var(--cream);
+  }
+  .serve-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--deep-brown);
+    margin-bottom: 8px;
+  }
+  .serve-card p { font-size: 13px; color: var(--text-light); line-height: 1.7; }
+  </style>
+  <style>
+  .about-section {
+    background: var(--deep-brown);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-section::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 600px;
+    line-height: 0.7;
+    color: rgba(255,255,255,0.02);
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    pointer-events: none;
+    user-select: none;
+  }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .about-image-placeholder {
+    aspect-ratio: 3/4;
+    background: var(--rich-brown);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-image-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,98,45,0.2) 0%, transparent 60%);
+  }
+  .about-image-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 20px;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: var(--terracotta);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .about-badge span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .about-badge span:last-child {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+  .about-right h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 32px;
+    color: var(--cream);
+  }
+  .about-right h2 em { font-style: italic; color: var(--muted-gold); }
+  .about-right p { color: rgba(245,240,232,0.75); line-height: 1.9; font-size: 15px; margin-bottom: 20px; }
+  .about-right p strong { color: var(--cream); font-weight: 500; }
+  .credentials {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(245,240,232,0.1);
+  }
+  .credential h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--muted-gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .credential p { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin: 0; }
+  .difference-section { background: var(--cream); }
+  .difference-header { text-align: center; margin-bottom: 70px; }
+  .difference-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    color: var(--deep-brown);
+    line-height: 1.1;
+  }
+  .difference-header h2 em { font-style: italic; color: var(--terracotta); }
+  .difference-header p { margin-top: 20px; color: var(--text-light); font-size: 15px; line-height: 1.8; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--text-light); }
+  .pillar { background: var(--cream); padding: 48px 36px; transition: background 0.3s ease; }
+  .pillar:hover { background: var(--warm-white); }
+  .pillar-number { font-family: 'Cormorant Garamond', serif; font-size: 72px; font-weight: 300; color: rgba(44,24,16,0.06); line-height: 1; margin-bottom: 20px; }
+  .pillar h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; color: var(--deep-brown); margin-bottom: 16px; line-height: 1.2; }
+  .pillar p { font-size: 13px; color: var(--text-light); line-height: 1.8; }
+  .pillar-accent { width: 32px; height: 2px; background: var(--terracotta); margin-bottom: 20px; }
+  .policies-section { background: var(--rich-brown); color: var(--cream); }
+  .policies-header { text-align: center; margin-bottom: 60px; }
+  .policies-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 300; color: var(--cream); }
+  .policies-header p { color: rgba(245,240,232,0.6); font-size: 14px; line-height: 1.8; margin-top: 16px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .policies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: rgba(245,240,232,0.08); }
+  .policy-card { background: rgba(44,24,16,0.4); padding: 40px 36px; border-top: 2px solid transparent; transition: border-color 0.3s ease; }
+  .policy-card:hover { border-top-color: var(--muted-gold); }
+  .policy-icon { font-size: 28px; margin-bottom: 16px; }
+  .policy-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--muted-gold); margin-bottom: 14px; }
+  .policy-card p { font-size: 13px; color: rgba(245,240,232,0.7); line-height: 1.85; }
+  .policy-card p strong { color: var(--cream); font-weight: 500; }
+  .policy-card a { color: var(--muted-gold); text-decoration: underline; text-underline-offset: 3px; }
+  .vpn-highlight { background: rgba(196,98,45,0.12); border: 1px solid rgba(196,98,45,0.3); padding: 24px 28px; margin-top: 12px; }
+  .vpn-highlight p { color: rgba(245,240,232,0.85) !important; }
+  .cta-section { background: var(--cream); text-align: center; padding: 120px 24px; }
+  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: var(--deep-brown); line-height: 1.1; margin-bottom: 24px; }
+  .cta-section h2 em { font-style: italic; color: var(--terracotta); }
+  .cta-section p { color: var(--text-light); font-size: 15px; line-height: 1.8; max-width: 560px; margin: 0 auto 48px; }
+  .btn-book { display: inline-block; padding: 20px 64px; background: var(--deep-brown); color: var(--cream); text-decoration: none; font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 500; transition: all 0.3s ease; }
+  .btn-book:hover { background: var(--terracotta); }
+  footer { background: var(--text-dark); padding: 48px 24px; text-align: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--cream); letter-spacing: 0.1em; margin-bottom: 12px; }
+  .footer-tagline { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,240,232,0.35); margin-bottom: 28px; }
+  .footer-links { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--muted-gold); }
+  .footer-copy { font-size: 11px; color: rgba(245,240,232,0.2); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+  .fade-in { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) {
+    section { padding: 70px 20px; }
+    .serve-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-image-placeholder { aspect-ratio: 4/3; }
+    .pillars { grid-template-columns: 1fr; }
+    .policies-grid { grid-template-columns: 1fr; }
+    .credentials { flex-wrap: wrap; gap: 24px; }
+    .btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
+    .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+  <section class="hero">
+  <div class="hero-ornament"></div>
+  <span class="hero-label">Mérida, México · Est. 2024</span>
+  <h1>Knotty<br><em>Opulence</em></h1>
+  <p class="hero-sub">Hair Care Studio & Locs Education</p>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">Your crown. Your knowledge. Wherever you are.</p>
+  <div class="hero-cta">
+    <a href="https://knottyophc.glossgenius.com/" class="btn-primary"><span>Book Your Appointment</span></a>
+    <a href="#about" class="btn-secondary">Meet Nay</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="intro-strip">
+  <p>You finally found <strong>your person</strong> — a specialist who understands your hair, your climate, and exactly what it means to be a Black woman navigating life abroad.</p>
+</div>
+
+<section class="serve-section">
+  <div class="container">
+    <div class="serve-grid">
+      <div class="serve-text fade-in">
+        <span class="section-label">Who We Serve</span>
+        <h2>Built for the<br>Black woman<br><em>living abroad</em></h2>
+        <p>You moved internationally and discovered, quickly, that your hair care routine didn't travel with you. The hard water, the humidity, the unfamiliar products, the language barrier at every beauty supply store — it adds up.</p>
+        <p>Knotty Opulence exists specifically for you. Whether you're newly arrived in Mérida, passing through the Yucatán, or building a life here — this is your chair, your specialist, your community.</p>
+      </div>
+      <div class="serve-cards fade-in">
+        <div class="serve-card">
+          <h4>The Newly Arrived Expat</h4>
+          <p>You just landed and you're already worried about your hair. You need someone who gets it — immediately. Knotty Opulence is your first call.</p>
+        </div>
+        <div class="serve-card">
+          <h4>The Long-Term Resident</h4>
+          <p>You've been here a while and you've been managing — but managing isn't thriving. It's time to stop improvising and start having a real plan for your hair.</p>
+        </div>
+        <div class="serve-card">
+          <h4>The Loc Journey Client</h4>
+          <p>You're starting locs, maintaining them, or reviving them after neglect. You want a specialist, not a generalist. You're in the right place.</p>
+        </div>
+        <div class="serve-card">
+          <h4>The Transient Traveler</h4>
+          <p>You're in Mérida for weeks or months and you need to get right before you move on. One appointment. Maximum impact. Everything you need to manage your hair wherever you go next.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-left fade-in">
+        <div class="about-image-placeholder">
+          <div class="about-image-text">[ Your photo goes here ]</div>
+        </div>
+        <div class="about-badge">
+          <span>20+</span>
+          <span>Years of Expertise</span>
+        </div>
+      </div>
+      <div class="about-right fade-in">
+        <span class="section-label">Meet Nay</span>
+        <h2>From behind<br>the chair to<br><em>building the knowledge</em></h2>
+        <p>I started doing hair over 20 years ago — behind a chair, one head at a time, learning what no school fully teaches: how to read a client's hair, her lifestyle, her environment, and give her exactly what she needs.</p>
+        <p>I've worked with every hair type, every texture, every stage of locs — from the nervous woman sitting down for her very first retwist to the client who's been loc'd for a decade and still doesn't know why her hair isn't thriving.</p>
+        <p>Now I'm based in <strong>Mérida, México</strong> — and I serve a community that rarely gets served well: Black women living internationally. Women who packed up their lives, their cultures, and their crowns and moved somewhere beautiful and unfamiliar.</p>
+        <p>I know the Mérida humidity. I know what the hard water does. I know what you can and can't find at the local beauty supply store. <strong>And I know how to make your hair work here.</strong></p>
+        <div class="credentials">
+          <div class="credential"><h5>20+</h5><p>Years Behind<br>the Chair</p></div>
+          <div class="credential"><h5>Locs</h5><p>Specialist &<br>Educator</p></div>
+          <div class="credential"><h5>Mérida</h5><p>Based &<br>Available</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="difference-section">
+  <div class="container">
+    <div class="difference-header fade-in">
+      <span class="section-label">The Knotty Opulence Difference</span>
+      <h2>This is not<br>a <em>standard</em> salon</h2>
+      <p>Every appointment at Knotty Opulence is designed to give you more than a service. You leave with knowledge, a plan, and the confidence to manage your hair — wherever life takes you next.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar fade-in"><div class="pillar-number">01</div><div class="pillar-accent"></div><h3>Specialist Expertise</h3><p>20+ years of focused natural hair and locs experience. Not a generalist who does a little of everything — a specialist who does your specific thing exceptionally well.</p></div>
+      <div class="pillar fade-in"><div class="pillar-number">02</div><div class="pillar-accent"></div><h3>Environment-Aware Care</h3><p>Your hair is living in Mérida. The humidity, the hard water, the heat — it all affects your hair differently than what you're used to. Every service accounts for your actual environment.</p></div>
+      <div class="pillar fade-in"><div class="pillar-number">03</div><div class="pillar-accent"></div><h3>Knowledge You Keep</h3><p>Every new client receives a Custom Care Protocol — a personalized written roadmap for your hair between appointments. You don't just leave looking good. You leave knowing what to do next.</p></div>
+      <div class="pillar fade-in"><div class="pillar-number">04</div><div class="pillar-accent"></div><h3>No Rush. No Overwhelm.</h3><p>A limited, intentional client list means you get Nay's full attention, expertise, and energy. Not a number in a packed schedule — a client whose hair actually matters.</p></div>
+      <div class="pillar fade-in"><div class="pillar-number">05</div><div class="pillar-accent"></div><h3>Education as the Product</h3><p>The goal isn't to make you dependent on a stylist. The goal is to make you the most knowledgeable steward of your own crown — whether you're in Mérida or on your next continent.</p></div>
+      <div class="pillar fade-in"><div class="pillar-number">06</div><div class="pillar-accent"></div><h3>A Stylist Who Gets It</h3><p>Nay lives the expat experience. She understands what it means to navigate life in a foreign country — and she built this studio specifically for women doing the same.</p></div>
+    </div>
+  </div>
+</section>
+  <section class="policies-section">
+  <div class="container">
+    <div class="policies-header fade-in">
+      <span class="section-label" style="color: var(--muted-gold);">Before You Book</span>
+      <h2>Studio Policies</h2>
+      <p>These policies exist to protect your experience and mine. Please read before booking — knowing the process makes everything smoother for both of us.</p>
+    </div>
+    <div class="policies-grid">
+      <div class="policy-card fade-in">
+        <div class="policy-icon">💻</div>
+        <h4>VPN Required to Book</h4>
+        <div class="vpn-highlight">
+          <p>My booking platform is U.S.-based, which means you'll need a <strong>VPN set to a U.S. location</strong> to complete your booking from outside the United States. It takes about 2 minutes to set up and is completely free with most VPN apps (ProtonVPN and Windscribe both have free tiers that work great).</p>
+          <p style="margin-top: 12px;">If you need help getting set up, <strong>message me directly</strong> — I'll walk you through it. Don't let this stop you from booking.</p>
+        </div>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">💳</div>
+        <h4>Deposits</h4>
+        <p>A deposit is required to secure all appointments.</p>
+        <p style="margin-top: 12px;"><strong>$50 deposit</strong> for services under $200.<br><strong>$100 deposit</strong> for services $200 and above.<br><strong>Consultation fee ($85)</strong> is paid in full at booking and credited toward your service if booked within 30 days.</p>
+        <p style="margin-top: 12px;">Deposits are non-refundable but transferable to a rescheduled appointment with proper notice.</p>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">🗓</div>
+        <h4>Cancellations & Rescheduling</h4>
+        <p>Life happens — especially expat life. All I ask is that you give me as much notice as possible.</p>
+        <p style="margin-top: 12px;"><strong>48+ hours notice:</strong> Your deposit transfers to a rescheduled appointment, no questions asked.<br><strong>Less than 48 hours:</strong> Deposit is forfeited. A new deposit is required to rebook.<br><strong>No-shows:</strong> Full service amount is charged and future booking requires prepayment in full.</p>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">⏰</div>
+        <h4>Late Arrivals</h4>
+        <p>Please arrive on time. Out of respect for every client in my schedule, I can only accommodate a <strong>15-minute grace period.</strong></p>
+        <p style="margin-top: 12px;">Arrivals more than 15 minutes late may result in a shortened service or rescheduled appointment at my discretion. Deposit will not be refunded for late arrivals requiring rescheduling.</p>
+        <p style="margin-top: 12px;">If you're running late, <strong>please message me</strong> — communication goes a long way.</p>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">📋</div>
+        <h4>New Client Consultations</h4>
+        <p>All new clients are strongly encouraged to book a <strong>Hair & Lifestyle Consultation</strong> before their first service. This 45–60 minute session assesses your hair, your environment, and your goals.</p>
+        <p style="margin-top: 12px;">For microloc and NC microloc services, <strong>a consultation is required</strong> before any install can be booked. No exceptions — this protects your hair and your investment.</p>
+      </div>
+      <div class="policy-card fade-in">
+        <div class="policy-icon">🌿</div>
+        <h4>Children & Guests</h4>
+        <p>Knotty Opulence is designed as a calm, focused experience. Please limit additional guests to those who are part of your appointment.</p>
+        <p style="margin-top: 12px;">Children receiving services are welcome. Children accompanying adults are welcome if they can be supervised quietly. The studio is small and intimate — I want the experience to be peaceful for everyone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container-narrow">
+    <div class="fade-in">
+      <span class="section-label" style="text-align: center; display: block;">Ready?</span>
+      <h2>Your crown<br>deserves <em>expert</em><br>hands</h2>
+      <p>Knotty Opulence is currently accepting new clients in Mérida. Appointments are limited — book now to secure your spot.</p>
+      <a href="https://knottyophc.glossgenius.com/" class="btn-book">Book Your Appointment</a>
+      <p style="margin-top: 24px; font-size: 12px; color: var(--text-light);">Remember to enable your VPN (set to U.S.) before booking. Questions? Message us directly.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Knotty Opulence</div>
+  <div class="footer-tagline">Your crown. Your knowledge. Wherever you are.</div>
+  <div class="footer-links">
+    <a href="#about">About Nay</a>
+    <a href="https://knottyophc.glossgenius.com/services">Services</a>
+    <a href="https://knottyophc.glossgenius.com/">Book Now</a>
+    <a href="https://www.instagram.com/knottyop_hc" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/share/1BHbzySHJd/" target="_blank">Facebook</a>
+  </div>
+  <div class="footer-copy">© 2026 Knotty Opulence Hair Care Studio · Mérida, México</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+  
