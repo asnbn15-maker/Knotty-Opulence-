@@ -32,6 +32,49 @@
     overflow-x: hidden;
   }
 
+  /* ── STICKY NAV (NEW) ── */
+  .site-nav {
+    position: fixed; top: 0; width: 100%; z-index: 200;
+    padding: 0 40px; height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(26,18,8,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(212,168,83,0.15);
+    transition: background 0.3s;
+  }
+  .site-nav.scrolled { background: rgba(26,18,8,0.98); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400;
+    color: var(--cream); text-decoration: none; letter-spacing: 0.04em;
+  }
+  .nav-logo em { font-style: italic; color: var(--muted-gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: rgba(245,240,232,0.55);
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a.shop-link {
+    color: var(--muted-gold); border: 1px solid rgba(212,168,83,0.35);
+    padding: 0.3rem 0.8rem;
+  }
+  .nav-links a.shop-link:hover {
+    background: var(--muted-gold); color: var(--deep-brown);
+  }
+  .nav-book {
+    background: var(--terracotta); color: var(--cream);
+    text-decoration: none; padding: 0.5rem 1.3rem;
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 500; transition: background 0.25s;
+  }
+  .nav-book:hover { background: var(--rich-brown); }
+  .nav-mobile-menu {
+    display: none; background: none; border: none;
+    color: var(--cream); font-size: 1.4rem; cursor: pointer;
+  }
+
   .hero {
     min-height: 100vh;
     background: var(--deep-brown);
@@ -170,6 +213,27 @@
     border-color: var(--muted-gold);
     color: var(--muted-gold);
   }
+
+  /* NEW: Shop teaser strip */
+  .shop-teaser {
+    background: var(--muted-gold);
+    padding: 18px 24px;
+    text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .shop-teaser p {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--deep-brown); font-weight: 500;
+  }
+  .shop-teaser a {
+    display: inline-block;
+    background: var(--deep-brown); color: var(--cream);
+    padding: 8px 24px; text-decoration: none;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; transition: background 0.25s;
+  }
+  .shop-teaser a:hover { background: var(--rich-brown); }
 
   .scroll-hint {
     position: absolute;
@@ -322,9 +386,7 @@
     color: var(--text-light);
     line-height: 1.7;
   }
-</style>
 
-<style>
   .about-section {
     background: var(--deep-brown);
     color: var(--cream);
@@ -354,9 +416,7 @@
     z-index: 1;
   }
 
-  .about-left {
-    position: relative;
-  }
+  .about-left { position: relative; }
 
   .about-image-placeholder {
     aspect-ratio: 3/4;
@@ -371,21 +431,6 @@
     inset: 0;
     background: linear-gradient(135deg, rgba(196,98,45,0.2) 0%, transparent 60%);
     pointer-events: none;
-  }
-
-  .about-image-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    font-style: italic;
-    color: rgba(245,240,232,0.4);
-    letter-spacing: 0.1em;
-    text-align: center;
-    padding: 20px;
   }
 
   .about-badge {
@@ -588,12 +633,7 @@
   }
 
   .policy-card p strong { color: var(--cream); font-weight: 500; }
-
-  .policy-card a {
-    color: var(--muted-gold);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
+  .policy-card a { color: var(--muted-gold); text-decoration: underline; text-underline-offset: 3px; }
 
   .vpn-highlight {
     background: rgba(196,98,45,0.12);
@@ -685,19 +725,16 @@
   }
 
   .footer-links a:hover { color: var(--muted-gold); }
-
   .footer-copy { font-size: 11px; color: rgba(245,240,232,0.2); }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes scrollPulse {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.7; }
@@ -708,13 +745,12 @@
     transform: translateY(32px);
     transition: opacity 0.8s ease, transform 0.8s ease;
   }
-
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 768px) {
+    .site-nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-mobile-menu { display: block; }
     section { padding: 70px 20px; }
     .serve-grid { grid-template-columns: 1fr; gap: 40px; }
     .about-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -722,21 +758,25 @@
     .pillars { grid-template-columns: 1fr; }
     .policies-grid { grid-template-columns: 1fr; }
     .credentials { flex-wrap: wrap; gap: 24px; }
-    .btn-secondary {
-      margin-left: 0;
-      margin-top: 12px;
-      display: inline-block;
-    }
-    .hero-cta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
+    .btn-secondary { margin-left: 0; margin-top: 12px; display: inline-block; }
+    .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .shop-teaser { flex-direction: column; gap: 0.8rem; }
   }
 </style>
 </head>
 <body>
+
+<!-- STICKY NAV (NEW — added to connect to shop page) -->
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">Knotty <em>Opulence</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">Meet Nay</a></li>
+    <li><a href="https://knottyophc.glossgenius.com/services">Services</a></li>
+    <li><a href="shop.html" class="shop-link">✦ Shop Botanicals</a></li>
+  </ul>
+  <a href="https://knottyophc.glossgenius.com/" class="nav-book">Book Now</a>
+  <button class="nav-mobile-menu" onclick="this.textContent = this.textContent === '☰' ? '✕' : '☰'">☰</button>
+</nav>
 
 <section class="hero">
   <div class="hero-ornament"></div>
@@ -755,6 +795,12 @@
   </div>
 </section>
 
+<!-- BOTANICALS TEASER STRIP (NEW) -->
+<div class="shop-teaser">
+  <p>✦ New: Knotty Opulence Botanicals — small-batch hair care, now available to order</p>
+  <a href="shop.html">Shop the Collection →</a>
+</div>
+
 <div class="intro-strip">
   <p>You finally found <strong>your person</strong> — a specialist who understands your hair, the climate, and exactly what it means to be a Black person navigating life abroad.</p>
 </div>
@@ -765,15 +811,9 @@
       <span class="section-label">The Knotty Opulence Philosophy</span>
       <div class="philosophy-accent"></div>
       <h2>Your hair deserves more than <em>a style.</em></h2>
-      <p>
-        At Knotty Opulence, healthy hair is the foundation of everything I do. This is not about quick fixes or temporary beauty. It is about creating a long-term relationship with your hair that is rooted in knowledge, consistency, and intentional care.
-      </p>
-      <p>
-        Every service is designed to support scalp health, hydration, retention, and the overall integrity of your crown. You are not just leaving styled — you are leaving with guidance, clarity, and a plan to help your hair thrive between appointments.
-      </p>
-      <p>
-        Because textured hair care abroad comes with unique challenges, Knotty Opulence was built to meet them with expertise. From Mérida’s humidity to hard water to the reality of finding the right products, your experience here is designed with your real life in mind.
-      </p>
+      <p>At Knotty Opulence, healthy hair is the foundation of everything I do. This is not about quick fixes or temporary beauty. It is about creating a long-term relationship with your hair that is rooted in knowledge, consistency, and intentional care.</p>
+      <p>Every service is designed to support scalp health, hydration, retention, and the overall integrity of your crown. You are not just leaving styled — you are leaving with guidance, clarity, and a plan to help your hair thrive between appointments.</p>
+      <p>Because textured hair care abroad comes with unique challenges, Knotty Opulence was built to meet them with expertise. From Mérida's humidity to hard water to the reality of finding the right products, your experience here is designed with your real life in mind.</p>
     </div>
   </div>
 </section>
@@ -784,39 +824,15 @@
       <div class="serve-text fade-in">
         <span class="section-label">Who We Serve</span>
         <h2>Built for <br>Black & Brown people<br><em>with textured hair, living abroad</em></h2>
-        <p>
-          You moved internationally and discovered, quickly, that your hair care routine didn't travel with you. The hard water, the humidity, the unfamiliar products, the language barrier at every beauty supply store — it adds up.
-        </p>
-        <p>
-          Knotty Opulence exists specifically for Black and Brown people with textured hair living internationally. Whether you're newly arrived in Mérida, passing through the Yucatán, or building a life here — this is your chair, your specialist, your community.
-        </p>
+        <p>You moved internationally and discovered, quickly, that your hair care routine didn't travel with you. The hard water, the humidity, the unfamiliar products, the language barrier at every beauty supply store — it adds up.</p>
+        <p>Knotty Opulence exists specifically for Black and Brown people with textured hair living internationally. Whether you're newly arrived in Mérida, passing through the Yucatán, or building a life here — this is your chair, your specialist, your community.</p>
       </div>
-
       <div class="serve-cards fade-in">
-        <div class="serve-card">
-          <h4>The Newly Arrived Expat</h4>
-          <p>You just landed and you're already worried about your hair. You need someone who gets it — immediately. Knotty Opulence is your first call.</p>
-        </div>
-
-        <div class="serve-card">
-          <h4>The Long-Term Resident</h4>
-          <p>You've been here a while and you've been managing — but managing isn't thriving. It's time to stop improvising and start having a real plan for your hair.</p>
-        </div>
-
-        <div class="serve-card">
-          <h4>The Loc Journey Client</h4>
-          <p>You're starting locs, maintaining them, or reviving them after neglect. You want a specialist, not a generalist. You're in the right place.</p>
-        </div>
-
-        <div class="serve-card">
-          <h4>Saturday Premium Bookings</h4>
-          <p>Saturday appointments are available for longer installs, Mini Twist Growth Program clients, and special occasion services. A $75 premium rate applies to all Saturday bookings. Plan ahead — Saturday slots fill quickly.</p>
-        </div>
-
-        <div class="serve-card">
-          <h4>The Transient Traveler</h4>
-          <p>You're in Mérida for weeks or months and you need to get right before you move on. One appointment. Maximum impact. Everything you need to manage your hair wherever you go next.</p>
-        </div>
+        <div class="serve-card"><h4>The Newly Arrived Expat</h4><p>You just landed and you're already worried about your hair. You need someone who gets it — immediately. Knotty Opulence is your first call.</p></div>
+        <div class="serve-card"><h4>The Long-Term Resident</h4><p>You've been here a while and you've been managing — but managing isn't thriving. It's time to stop improvising and start having a real plan for your hair.</p></div>
+        <div class="serve-card"><h4>The Loc Journey Client</h4><p>You're starting locs, maintaining them, or reviving them after neglect. You want a specialist, not a generalist. You're in the right place.</p></div>
+        <div class="serve-card"><h4>Saturday Premium Bookings</h4><p>Saturday appointments are available for longer installs, Mini Twist Growth Program clients, and special occasion services. A $75 premium rate applies to all Saturday bookings. Plan ahead — Saturday slots fill quickly.</p></div>
+        <div class="serve-card"><h4>The Transient Traveler</h4><p>You're in Mérida for weeks or months and you need to get right before you move on. One appointment. Maximum impact. Everything you need to manage your hair wherever you go next.</p></div>
       </div>
     </div>
   </div>
@@ -834,7 +850,6 @@
           <span>Years of Expertise</span>
         </div>
       </div>
-
       <div class="about-right fade-in">
         <span class="section-label">Meet Nay</span>
         <h2>From behind<br>the chair to<br><em>building the knowledge</em></h2>
@@ -842,7 +857,6 @@
         <p>I've worked with every hair type, every texture, every stage of locs — from the nervous person sitting down for their very first retwist to the client who's been loc'd for a decade and still doesn't know why her hair isn't thriving.</p>
         <p>Now I'm based in <strong>Mérida, México</strong> — and I serve a community that rarely gets served well: Black women living internationally. Women who packed up their lives, their cultures, and their crowns and moved somewhere beautiful and unfamiliar.</p>
         <p>I know the Mérida humidity. I know what the hard water does. I know what you can and can't find at the local beauty supply store. <strong>And I know how to make your hair work here.</strong></p>
-
         <div class="credentials">
           <div class="credential"><h5>20+</h5><p>Years Behind<br>the Chair</p></div>
           <div class="credential"><h5>Locs</h5><p>Specialist &<br>Educator</p></div>
@@ -860,7 +874,6 @@
       <h2>This is not<br>a <em>standard</em> salon</h2>
       <p>Every appointment at Knotty Opulence is designed to give you more than a service. You leave with knowledge, a plan, and the confidence to manage your hair — wherever life takes you next.</p>
     </div>
-
     <div class="pillars">
       <div class="pillar fade-in"><div class="pillar-number">01</div><div class="pillar-accent"></div><h3>Specialist Expertise</h3><p>20+ years of focused natural hair and locs experience. Not a generalist who does a little of everything — a specialist who does your specific thing exceptionally well.</p></div>
       <div class="pillar fade-in"><div class="pillar-number">02</div><div class="pillar-accent"></div><h3>Environment-Aware Care</h3><p>Your hair is living in Mérida. The humidity, the hard water, the heat — it all affects your hair differently than what you're used to. Every service accounts for your actual environment.</p></div>
@@ -879,7 +892,6 @@
       <h2>Studio Policies</h2>
       <p>These policies exist to protect your experience and mine. Please read before booking — knowing the process makes everything smoother for both of us.</p>
     </div>
-
     <div class="policies-grid">
       <div class="policy-card fade-in">
         <div class="policy-icon">💻</div>
@@ -889,7 +901,6 @@
           <p style="margin-top: 12px;">If you need help getting set up, <strong>message me directly</strong> — I'll walk you through it. Don't let this stop you from booking.</p>
         </div>
       </div>
-
       <div class="policy-card fade-in">
         <div class="policy-icon">💳</div>
         <h4>Deposits</h4>
@@ -897,14 +908,12 @@
         <p style="margin-top: 12px;"><strong>$50 deposit</strong> for services under $200.<br><strong>$100 deposit</strong> for services $200 and above.<br><strong>Consultation fee ($85)</strong> is paid in full at booking and credited toward your service if booked within 30 days.</p>
         <p style="margin-top: 12px;">Deposits are non-refundable but transferable to a rescheduled appointment with proper notice.</p>
       </div>
-
       <div class="policy-card fade-in">
         <div class="policy-icon">🗓</div>
         <h4>Cancellations & Rescheduling</h4>
         <p>Life happens — especially expat life. All I ask is that you give me as much notice as possible.</p>
         <p style="margin-top: 12px;"><strong>48+ hours notice:</strong> Your deposit transfers to a rescheduled appointment, no questions asked.<br><strong>Less than 48 hours:</strong> Deposit is forfeited. A new deposit is required to rebook.<br><strong>No-shows:</strong> Full service amount is charged and future booking requires prepayment in full.</p>
       </div>
-
       <div class="policy-card fade-in">
         <div class="policy-icon">⏰</div>
         <h4>Late Arrivals</h4>
@@ -912,14 +921,12 @@
         <p style="margin-top: 12px;">Arrivals more than 15 minutes late may result in a shortened service or rescheduled appointment at my discretion. Deposit will not be refunded for late arrivals requiring rescheduling.</p>
         <p style="margin-top: 12px;">If you're running late, <strong>please message me</strong> — communication goes a long way.</p>
       </div>
-
       <div class="policy-card fade-in">
         <div class="policy-icon">📋</div>
         <h4>New Client Consultations</h4>
         <p>All new clients are strongly encouraged to book a <strong>Hair & Lifestyle Consultation</strong> before their first service. This 45–60 minute session assesses your hair, your environment, and your goals.</p>
         <p style="margin-top: 12px;">For microloc and NC microloc services, <strong>a consultation is required</strong> before any install can be booked. No exceptions — this protects your hair and your investment.</p>
       </div>
-
       <div class="policy-card fade-in">
         <div class="policy-icon">🌿</div>
         <h4>Children & Guests</h4>
@@ -949,6 +956,7 @@
     <a href="#about">About Nay</a>
     <a href="https://knottyophc.glossgenius.com/services">Services</a>
     <a href="https://knottyophc.glossgenius.com/">Book Now</a>
+    <a href="shop.html">Botanicals Shop</a>
     <a href="https://www.instagram.com/knottyop_hc" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/share/1BHbzySHJd/" target="_blank">Facebook</a>
   </div>
@@ -956,13 +964,19 @@
 </footer>
 
 <script>
+  // Scroll fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
 </script>
 
 </body>
