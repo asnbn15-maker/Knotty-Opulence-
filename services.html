@@ -203,6 +203,95 @@
   .footer-links a:hover { color: var(--cream); }
   .footer-copy { font-size: 0.7rem; color: rgba(245,240,232,0.25); }
 
+  /* HERO TAB BUTTONS */
+  .hero-tab-btn {
+    display: inline-block; text-decoration: none;
+    border: 1px solid rgba(212,168,83,0.4); color: var(--warm-brown);
+    padding: 0.55rem 1.2rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: all 0.25s; background: transparent;
+  }
+  .hero-tab-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-tab-btn--gold { background: var(--gold); color: var(--deep-brown); border-color: var(--gold); font-weight: 500; }
+  .hero-tab-btn--gold:hover { background: var(--deep-brown); color: var(--gold); }
+
+  /* SERVICE CATEGORY SECTIONS */
+  .svc-section { padding: 5rem 6rem; }
+  .svc-section.dark { background: var(--deep-brown); }
+  .svc-section.light { background: var(--white); }
+  .svc-section.mid { background: var(--cream); }
+  .svc-header { margin-bottom: 3rem; }
+  .svc-header-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .svc-book-all {
+    display: inline-block; text-decoration: none;
+    background: var(--deep-brown); color: var(--cream);
+    padding: 0.7rem 1.6rem; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    transition: background 0.3s; white-space: nowrap; flex-shrink: 0;
+  }
+  .svc-book-all:hover { background: var(--gold); color: var(--deep-brown); }
+  .svc-book-all.gold { background: var(--gold); color: var(--deep-brown); }
+  .svc-book-all.gold:hover { background: var(--cream); }
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; }
+  .svc-card {
+    background: var(--white); padding: 2rem 1.8rem;
+    border-bottom: 2px solid transparent; transition: border-color 0.3s, transform 0.3s;
+  }
+  .svc-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .svc-section.dark .svc-card { background: rgba(245,240,232,0.05); border: 1px solid rgba(212,168,83,0.1); }
+  .svc-section.dark .svc-card:hover { border-color: rgba(212,168,83,0.4); }
+  .svc-card-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.35rem;
+    color: var(--warm-brown); margin-bottom: 0.4rem; font-weight: 400;
+  }
+  .svc-section.dark .svc-card-name { color: var(--cream); }
+  .svc-card-desc { font-size: 0.82rem; line-height: 1.65; color: var(--text-muted); margin-bottom: 1rem; }
+  .svc-section.dark .svc-card-desc { color: rgba(245,240,232,0.5); }
+  .svc-card-price {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold);
+  }
+  .svc-card-tag {
+    display: inline-block; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; margin-bottom: 0.8rem;
+    background: rgba(212,168,83,0.1); color: var(--gold-dim);
+  }
+
+  /* COMING SOON CARD */
+  .svc-coming-soon {
+    border: 1px dashed rgba(212,168,83,0.3);
+    padding: 4rem 3rem; text-align: center; background: transparent;
+  }
+  .svc-coming-soon-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.5; }
+  .svc-coming-soon h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+    color: var(--warm-brown); margin-bottom: 0.8rem; font-weight: 300;
+  }
+  .svc-coming-soon h3 em { color: var(--gold); font-style: italic; }
+  .svc-coming-soon p { font-size: 0.88rem; line-height: 1.75; color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem; }
+
+  /* SPECIAL OCCASIONS CONSULT CARD */
+  .occasion-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1px solid rgba(212,168,83,0.25); overflow: hidden;
+  }
+  .occasion-left { background: var(--warm-brown); padding: 3.5rem 3rem; }
+  .occasion-right { background: var(--white); padding: 3.5rem 3rem; display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; }
+  .occasion-tag { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(212,168,83,0.65); margin-bottom: 0.6rem; }
+  .occasion-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 0.8rem; }
+  .occasion-title em { color: var(--gold); font-style: italic; }
+  .occasion-desc { font-size: 0.88rem; line-height: 1.8; color: rgba(245,240,232,0.6); }
+  .occasion-service { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(212,168,83,0.1); font-size: 0.88rem; color: var(--text-muted); }
+  .occasion-service:last-of-type { border-bottom: none; }
+  .occasion-service::before { content: '✦'; color: var(--gold); font-size: 0.5rem; flex-shrink: 0; }
+  .occasion-note { font-size: 0.78rem; color: var(--text-muted); font-style: italic; line-height: 1.6; border-left: 2px solid var(--gold); padding-left: 1rem; }
+
+  /* SECTION ANCHOR OFFSET (for fixed nav) */
+  .svc-anchor { display: block; height: 70px; margin-top: -70px; visibility: hidden; }
+
+  /* JOURNEY LABEL */
+  .journey-section-label {
+    background: var(--gold); color: var(--deep-brown);
+    padding: 0.8rem 6rem; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+  }
+
   /* REVEAL */
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.75s ease, transform 0.75s ease; }
   .reveal.visible { opacity: 1; transform: none; }
@@ -257,6 +346,11 @@
     .mb-action { text-align: left; }
     .weekly-inner { grid-template-columns: 1fr; }
     .cta-strip { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .svc-section { padding: 3rem 1.5rem; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .svc-header-inner { flex-direction: column; align-items: flex-start; }
+    .occasion-card { grid-template-columns: 1fr; }
+    .journey-section-label { padding: 0.8rem 1.5rem; }
     .journey-divider { margin: 0 1.5rem; }
     footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -651,11 +745,11 @@
 <!-- CTA -->
 <div class="cta-strip reveal">
   <div>
-    <h2>Ready to begin your<br><em>loc journey?</em></h2>
-    <p>Start with the install. Lock in your maintenance. Show up consistently. That's the whole formula.</p>
+    <h2>Ready to book<br><em>your appointment?</em></h2>
+    <p>Locs, loose natural, special occasions — whatever you need, your specialist is here. Limited availability, book now to secure your spot.</p>
   </div>
   <div class="cta-buttons">
-    <a href="https://knottyophc.glossgenius.com/" target="_blank" class="cta-btn-primary">Book Your Install</a>
+    <a href="https://knottyophc.glossgenius.com/" target="_blank" class="cta-btn-primary">Book Now</a>
     <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="cta-btn-secondary">Browse Packages & Memberships</a>
   </div>
 </div>
