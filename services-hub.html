@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Service Natural Hair Care — Knotty Opulence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --deep-brown: #2C1810;
+    --warm-brown: #3D2B1F;
+    --gold: #D4A853;
+    --gold-dim: #B8922A;
+    --sage: #6B7C5C;
+    --mist: #E8E0D0;
+    --white: #FDFAF5;
+    --text-muted: #7A6455;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--deep-brown); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(245,240,232,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,168,83,0.2);
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--warm-brown); text-decoration: none; white-space: nowrap; }
+  .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: var(--warm-brown); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-book { background: var(--deep-brown); color: var(--cream); padding: 0.6rem 1.4rem; text-decoration: none; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.3s; white-space: nowrap; }
+  .nav-book:hover { background: var(--gold); color: var(--deep-brown); }
+  .nav-mobile-btn { display: none; background: none; border: none; color: var(--warm-brown); font-size: 1.6rem; cursor: pointer; padding: 0.2rem 0.4rem; line-height: 1; }
+
+  /* MOBILE DRAWER */
+  .mobile-drawer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 200; }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer-overlay { position: absolute; inset: 0; background: rgba(26,10,5,0.7); }
+  .mobile-drawer-panel {
+    position: absolute; top: 0; right: 0;
+    width: 78%; max-width: 320px; height: 100%;
+    background: var(--deep-brown); border-left: 1px solid rgba(212,168,83,0.2);
+    padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-drawer.open .mobile-drawer-panel { transform: translateX(0); }
+  .mobile-drawer-close { position: absolute; top: 1.2rem; right: 1.5rem; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; opacity: 0.7; }
+  .mobile-drawer-close:hover { opacity: 1; }
+  .mobile-drawer-links { list-style: none; display: flex; flex-direction: column; }
+  .mobile-drawer-links li { border-bottom: 1px solid rgba(212,168,83,0.12); }
+  .mobile-drawer-links a { display: block; padding: 1.1rem 0; text-decoration: none; color: rgba(245,240,232,0.75); font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+  .mobile-drawer-links a:hover { color: var(--gold); }
+  .mobile-drawer-book { display: block; margin-top: 2.5rem; background: var(--warm-brown); color: var(--cream); padding: 1rem; text-align: center; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; transition: background 0.25s; }
+  .mobile-drawer-book:hover { background: var(--gold); color: var(--deep-brown); }
+
+  /* HERO */
+  .hero {
+    padding: 9rem 6rem 5rem; background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(212,168,83,0.06) 100%);
+    pointer-events: none;
+  }
+  .hero-label { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-label::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--warm-brown); max-width: 700px; }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub { font-size: 1rem; line-height: 1.8; color: var(--text-muted); max-width: 560px; margin-top: 1.5rem; }
+
+  /* CATEGORY GRID */
+  .categories-section { padding: 5rem 6rem 6rem; }
+  .categories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 3.5rem;
+  }
+
+  .cat-card {
+    position: relative; overflow: hidden;
+    min-height: 420px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    text-decoration: none;
+    transition: transform 0.4s ease;
+  }
+  .cat-card:hover { transform: scale(1.015); }
+  .cat-card:hover .cat-overlay { opacity: 1; }
+  .cat-card:hover .cat-arrow { transform: translateX(6px); }
+
+  /* Background colors per category */
+  .cat-card.loc-love { background: linear-gradient(160deg, #2C1810 0%, #4A2A18 50%, #1A0E06 100%); }
+  .cat-card.loose-natural { background: linear-gradient(160deg, #3D4A30 0%, #5A6B48 50%, #2A3520 100%); }
+  .cat-card.alopecia { background: linear-gradient(160deg, #2A2838 0%, #3D3A50 50%, #1A1828 100%); }
+  .cat-card.special { background: linear-gradient(160deg, #3A2218 0%, #5C3828 50%, #261408 100%); }
+
+  /* Decorative texture */
+  .cat-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(212,168,83,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cat-overlay {
+    position: absolute; inset: 0;
+    background: rgba(212,168,83,0.06);
+    transition: opacity 0.4s;
+    opacity: 0;
+  }
+
+  .cat-content {
+    position: relative; z-index: 1;
+    padding: 2.5rem 2.8rem;
+    border-top: 1px solid rgba(212,168,83,0.2);
+  }
+
+  .cat-label {
+    font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(212,168,83,0.6); margin-bottom: 0.5rem;
+  }
+  .cat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; line-height: 1.1;
+    color: var(--cream); margin-bottom: 0.8rem;
+  }
+  .cat-title em { color: var(--gold); font-style: italic; }
+  .cat-desc {
+    font-size: 0.83rem; line-height: 1.7;
+    color: rgba(245,240,232,0.55); margin-bottom: 1.5rem;
+    max-width: 380px;
+  }
+  .cat-cta {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .cat-arrow { transition: transform 0.3s; }
+
+  /* Coming soon badge */
+  .cat-badge {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.25rem 0.8rem; border: 1px solid rgba(212,168,83,0.4);
+    color: rgba(212,168,83,0.7);
+  }
+
+  /* Large decorative number */
+  .cat-num {
+    position: absolute; top: 1.5rem; left: 2.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 300; line-height: 1;
+    color: rgba(212,168,83,0.08); pointer-events: none;
+    user-select: none;
+  }
+
+  /* PACKAGES STRIP */
+  .packages-strip {
+    background: var(--deep-brown);
+    padding: 3.5rem 6rem;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 4rem;
+  }
+  .packages-strip-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(212,168,83,0.6); margin-bottom: 0.6rem; }
+  .packages-strip h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 2.5vw, 2.4rem); font-weight: 300; color: var(--cream); line-height: 1.2; }
+  .packages-strip h2 em { color: var(--gold); font-style: italic; }
+  .packages-strip p { font-size: 0.85rem; color: rgba(245,240,232,0.45); margin-top: 0.8rem; line-height: 1.7; max-width: 520px; }
+  .packages-strip-btns { display: flex; flex-direction: column; gap: 0.8rem; flex-shrink: 0; }
+  .pkg-btn-primary { display: block; background: var(--gold); color: var(--deep-brown); padding: 0.9rem 2rem; text-decoration: none; text-align: center; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; transition: background 0.3s; white-space: nowrap; }
+  .pkg-btn-primary:hover { background: var(--cream); }
+  .pkg-btn-secondary { display: block; background: transparent; color: rgba(245,240,232,0.55); border: 1px solid rgba(245,240,232,0.2); padding: 0.9rem 2rem; text-decoration: none; text-align: center; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.3s; white-space: nowrap; }
+  .pkg-btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* FOOTER */
+  footer { background: var(--deep-brown); border-top: 1px solid rgba(212,168,83,0.15); padding: 3rem 6rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--cream); }
+  .footer-logo em { color: var(--gold); font-style: italic; }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { text-decoration: none; color: rgba(245,240,232,0.4); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy { font-size: 0.7rem; color: rgba(245,240,232,0.25); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.75s ease, transform 0.75s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 0.8rem 1.2rem; }
+    .nav-links, .nav-book { display: none; }
+    .nav-mobile-btn { display: block; }
+    .hero { padding: 5rem 1.5rem 3rem; }
+    .categories-section { padding: 3rem 1.5rem; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .cat-card { min-height: 300px; }
+    .packages-strip { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+    .packages-strip-btns { flex-direction: row; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Knotty <em>Opulence</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Meet Nay</a></li>
+    <li><a href="services-hub.html" class="active">Services</a></li>
+    <li><a href="shop.html">✦ Shop Botanicals</a></li>
+  </ul>
+  <a href="https://knottyophc.glossgenius.com/" target="_blank" class="nav-book">Book Now</a>
+  <button class="nav-mobile-btn" onclick="toggleDrawer()" aria-label="Open menu">☰</button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="mobile-drawer-panel">
+    <button class="mobile-drawer-close" onclick="toggleDrawer()">✕</button>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html#about" onclick="toggleDrawer()">Meet Nay</a></li>
+      <li><a href="services-hub.html" onclick="toggleDrawer()">Services</a></li>
+      <li><a href="shop.html" onclick="toggleDrawer()">✦ Shop Botanicals</a></li>
+    </ul>
+    <a href="https://knottyophc.glossgenius.com/" target="_blank" class="mobile-drawer-book">Book Now</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Knotty Opulence Hair Care Studio</p>
+  <h1>Full-Service<br><em>Natural Hair Care.</em></h1>
+  <p class="hero-sub">Locs, loose natural hair, alopecia, special occasions — wherever you are in your hair journey, there is a place for you here. Select your category below to explore what's available and what to expect.</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories-section">
+  <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+    <div>
+      <p style="font-size:0.68rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Where do you want to start?</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:300; color:var(--warm-brown); line-height:1.1;">Choose your <em>category</em></h2>
+    </div>
+    <a href="https://knottyophc.glossgenius.com/" target="_blank" style="text-decoration:none; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); border-bottom:1px solid rgba(212,168,83,0.3); padding-bottom:0.2rem;">View all services on Glossgenius →</a>
+  </div>
+
+  <div class="categories-grid reveal">
+
+    <!-- LOC LOVE -->
+    <a href="loc-love.html" class="cat-card loc-love">
+      <div class="cat-num">01</div>
+      <div class="cat-overlay"></div>
+      <div class="cat-content">
+        <p class="cat-label">Specialist Services</p>
+        <h3 class="cat-title">Loc <em>Love</em></h3>
+        <p class="cat-desc">From your very first install to decade-old locs that need an expert touch. Standard locs, microlocs, maintenance, styles, detox, repair — every stage of the loc journey.</p>
+        <span class="cat-cta">Explore Loc Love <span class="cat-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- LOOSE NATURAL -->
+    <a href="loose-natural.html" class="cat-card loose-natural">
+      <div class="cat-num">02</div>
+      <div class="cat-overlay"></div>
+      <div class="cat-content">
+        <p class="cat-label">Natural Hair Services</p>
+        <h3 class="cat-title">Loose <em>Natural</em></h3>
+        <p class="cat-desc">You don't have to be loc'd to belong here. Wash & blows, silk press, curly wash & go, protective styles, mini twists, color — professional care for loose natural textures.</p>
+        <span class="cat-cta">Explore Loose Natural <span class="cat-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- ALOPECIA CARE -->
+    <a href="alopecia-care.html" class="cat-card alopecia">
+      <div class="cat-num">03</div>
+      <div class="cat-overlay"></div>
+      <span class="cat-badge">Coming Soon</span>
+      <div class="cat-content">
+        <p class="cat-label">Specialized Care</p>
+        <h3 class="cat-title">Alopecia <em>Care</em></h3>
+        <p class="cat-desc">Intentional, sensitive care for clients navigating hair loss. Dedicated services and a specialist approach currently in development — launching soon.</p>
+        <span class="cat-cta">Learn More <span class="cat-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- SPECIAL OCCASIONS -->
+    <a href="special-occasions.html" class="cat-card special">
+      <div class="cat-num">04</div>
+      <div class="cat-overlay"></div>
+      <div class="cat-content">
+        <p class="cat-label">Event & Occasion Styling</p>
+        <h3 class="cat-title">Special <em>Occasions</em></h3>
+        <p class="cat-desc">Weddings, quinceañeras, photoshoots, graduations. Your crown deserves to be as intentional as your event. All occasion bookings begin with a consultation.</p>
+        <span class="cat-cta">Explore Special Occasions <span class="cat-arrow">→</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- LOC JOURNEY PACKAGES STRIP -->
+<div class="packages-strip reveal">
+  <div>
+    <p class="packages-strip-label">Loc Journey Packages & Memberships</p>
+    <h2>Commit to your locs.<br><em>Lock in your rate.</em></h2>
+    <p>Starting a loc or microloc journey? After your install, choose a maintenance package or monthly membership — and your sixth session is free when you book six.</p>
+  </div>
+  <div class="packages-strip-btns">
+    <a href="services.html" class="pkg-btn-primary">View Packages & Memberships</a>
+    <a href="https://knottyophc.glossgenius.com/" target="_blank" class="pkg-btn-secondary">Book Your Install</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Knotty <em>Opulence</em></div>
+  <ul class="footer-links">
+    <li><a href="index.html#about">Meet Nay</a></li>
+    <li><a href="services-hub.html">Services</a></li>
+    <li><a href="shop.html">Shop Botanicals</a></li>
+    <li><a href="https://www.instagram.com/knottyop_hc" target="_blank">Instagram</a></li>
+    <li><a href="https://www.facebook.com/share/1BHbzySHJd/" target="_blank">Facebook</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Knotty Opulence Hair Care Studio · Mérida, México</p>
+</footer>
+
+<script>
+  function toggleDrawer() {
+    const drawer = document.getElementById('mobileDrawer');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { document.getElementById('mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; }
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
