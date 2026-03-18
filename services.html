@@ -24,29 +24,31 @@
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(245,240,232,0.95); backdrop-filter: blur(12px);
+    padding: 1rem 3rem;
+    background: rgba(245,240,232,0.97); backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(212,168,83,0.2);
+    min-height: 60px;
   }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--warm-brown); text-decoration: none; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--warm-brown); text-decoration: none; white-space: nowrap; }
   .nav-logo em { color: var(--gold); font-style: italic; }
   .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { text-decoration: none; color: var(--warm-brown); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; }
   .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-  .nav-book { background: var(--deep-brown); color: var(--cream); padding: 0.6rem 1.4rem; text-decoration: none; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.3s; }
+  .nav-book { background: var(--deep-brown); color: var(--cream); padding: 0.6rem 1.4rem; text-decoration: none; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.3s; white-space: nowrap; }
   .nav-book:hover { background: var(--gold); color: var(--deep-brown); }
+  .nav-mobile-btn { display: none; background: none; border: none; color: var(--warm-brown); font-size: 1.6rem; cursor: pointer; padding: 0.2rem 0.4rem; line-height: 1; }
 
   /* PAGE HERO */
-  .page-hero { padding: 9rem 6rem 5rem; background: var(--white); position: relative; overflow: hidden; }
+  .page-hero { padding: 8rem 6rem 4rem; background: var(--white); position: relative; overflow: hidden; }
   .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 45%; height: 100%; background: linear-gradient(135deg, transparent 0%, rgba(212,168,83,0.06) 100%); pointer-events: none; }
   .page-hero-label { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; }
   .page-hero-label::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
-  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--warm-brown); max-width: 700px; }
+  .page-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--warm-brown); max-width: 700px; }
   .page-hero h1 em { color: var(--gold); font-style: italic; }
   .page-hero-sub { font-size: 1rem; line-height: 1.8; color: var(--text-muted); max-width: 540px; margin-top: 1.5rem; }
 
   /* PURCHASE STRIP */
-  .purchase-strip { background: var(--sage); padding: 1rem 6rem; display: flex; align-items: center; gap: 2rem; }
+  .purchase-strip { background: var(--sage); padding: 1.2rem 6rem; display: flex; align-items: center; gap: 2rem; margin: 2rem -6rem 0; }
   .purchase-strip p { font-size: 0.82rem; color: rgba(255,255,255,0.9); line-height: 1.5; flex: 1; }
   .purchase-strip strong { color: #fff; font-weight: 500; }
   .purchase-strip-links { display: flex; gap: 0.8rem; flex-shrink: 0; }
@@ -205,19 +207,56 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.75s ease, transform 0.75s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
+  /* MOBILE DRAWER */
+  .mobile-drawer {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 200;
+  }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer-overlay { position: absolute; inset: 0; background: rgba(26,10,5,0.7); }
+  .mobile-drawer-panel {
+    position: absolute; top: 0; right: 0;
+    width: 78%; max-width: 320px; height: 100%;
+    background: var(--deep-brown); border-left: 1px solid rgba(212,168,83,0.2);
+    padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-drawer.open .mobile-drawer-panel { transform: translateX(0); }
+  .mobile-drawer-close {
+    position: absolute; top: 1.2rem; right: 1.5rem;
+    background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; opacity: 0.7;
+  }
+  .mobile-drawer-close:hover { opacity: 1; }
+  .mobile-drawer-links { list-style: none; display: flex; flex-direction: column; }
+  .mobile-drawer-links li { border-bottom: 1px solid rgba(212,168,83,0.12); }
+  .mobile-drawer-links a {
+    display: block; padding: 1.1rem 0; text-decoration: none;
+    color: rgba(245,240,232,0.75); font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s;
+  }
+  .mobile-drawer-links a:hover { color: var(--gold); }
+  .mobile-drawer-book {
+    display: block; margin-top: 2.5rem; background: var(--warm-brown); color: var(--cream);
+    padding: 1rem; text-align: center; text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; transition: background 0.25s;
+  }
+  .mobile-drawer-book:hover { background: var(--gold); color: var(--deep-brown); }
+
   /* MOBILE */
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
+    nav { padding: 0.8rem 1.2rem; }
     .nav-links { display: none; }
-    .page-hero, .journey-section, .weekly-section, .why-section, .start-section { padding: 4rem 1.5rem; }
+    .nav-book { display: none; }
+    .nav-mobile-btn { display: block; }
+    .page-hero { padding: 5rem 1.5rem 3rem; }
+    .journey-section, .weekly-section, .why-section, .start-section { padding: 3rem 1.5rem; }
+    .purchase-strip { margin: 2rem -1.5rem 0; padding: 1.2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .purchase-strip-links { flex-wrap: wrap; }
+    .path-strip { padding: 1.5rem 1.5rem; flex-direction: column; gap: 0.8rem; }
     .journey-header { grid-template-columns: 1fr; gap: 2rem; }
     .options-grid, .why-grid, .start-steps { grid-template-columns: 1fr; }
-    .membership-banner { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+    .membership-banner { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
     .mb-action { text-align: left; }
     .weekly-inner { grid-template-columns: 1fr; }
     .cta-strip { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
-    .path-strip, .purchase-strip { padding: 2rem 1.5rem; flex-direction: column; gap: 0.8rem; }
-    .purchase-strip-links { flex-wrap: wrap; }
     .journey-divider { margin: 0 1.5rem; }
     footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -235,7 +274,22 @@
     <li><a href="shop.html">✦ Shop Botanicals</a></li>
   </ul>
   <a href="https://knottyophc.glossgenius.com/" target="_blank" class="nav-book">Book Now</a>
+  <button class="nav-mobile-btn" onclick="toggleDrawer()" aria-label="Open menu">☰</button>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="mobile-drawer-panel">
+    <button class="mobile-drawer-close" onclick="toggleDrawer()" aria-label="Close menu">✕</button>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html#about" onclick="toggleDrawer()">Meet Nay</a></li>
+      <li><a href="services.html" onclick="toggleDrawer()">Services</a></li>
+      <li><a href="shop.html" onclick="toggleDrawer()">✦ Shop Botanicals</a></li>
+    </ul>
+    <a href="https://knottyophc.glossgenius.com/" target="_blank" class="mobile-drawer-book">Book Now</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="page-hero">
@@ -243,16 +297,6 @@
   <h1>Your Loc Journey,<br><em>Done Right.</em></h1>
   <p class="page-hero-sub">Every journey starts with the install. Where you go from there — à la carte, package, or membership — is up to you. But consistency is what makes locs thrive, and a committed client always gets the best results.</p>
 </section>
-
-<!-- PURCHASE STRIP -->
-<div class="purchase-strip">
-  <p><strong>Packages and memberships can be purchased online.</strong> Choose your path below, then buy directly through the Knotty Opulence booking platform — no waiting, no back and forth.</p>
-  <div class="purchase-strip-links">
-    <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="purchase-strip-link">Buy a Package →</a>
-    <a href="https://knottyophc.glossgenius.com/shop/memberships?tab=explore" target="_blank" class="purchase-strip-link">Join a Membership →</a>
-  </div>
-</div>
-
 
 <!-- ══════════════════════════════ -->
 <!-- LOC JOURNEY                    -->
@@ -280,6 +324,15 @@
         <div class="journey-include-item">Scalp assessment & product recommendations for Mérida</div>
       </div>
       <a href="https://knottyophc.glossgenius.com/" target="_blank" class="journey-book-btn">Book Your Loc Install</a>
+    </div>
+  </div>
+
+  <!-- purchase strip lives here, after install info -->
+  <div class="purchase-strip reveal">
+    <p><strong>Packages and memberships can be purchased online.</strong> Choose your path below and buy directly — no waiting, no back and forth.</p>
+    <div class="purchase-strip-links">
+      <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="purchase-strip-link">Buy a Package →</a>
+      <a href="https://knottyophc.glossgenius.com/shop/memberships?tab=explore" target="_blank" class="purchase-strip-link">Join a Membership →</a>
     </div>
   </div>
 
@@ -330,15 +383,15 @@
       <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="option-cta">Buy Package Online</a>
     </div>
     <div class="option-card premium">
-      <span class="option-badge">Best Value</span>
+      <span class="option-badge">1 Session Free</span>
       <p class="option-type">6-Month Package</p>
       <h3 class="option-name">6-Retwist Package</h3>
-      <p class="option-tagline">The full commitment. Six visits locked in. Your hair will show it.</p>
+      <p class="option-tagline">Book 6, get 1 free. Six retwists for the price of five — your sixth session is completely covered.</p>
       <div class="option-price">
         <div class="option-price-main">$960</div>
         <p class="option-price-note">one-time payment · $160 per session</p>
       </div>
-      <span class="option-savings">Save $150 vs à la carte</span>
+      <span class="option-savings">Your 6th retwist is free — $185+ value</span>
       <div class="option-perks">
         <p class="option-perks-label">Every Visit Includes</p>
         <div class="option-perk">Wash, retwist & dryer time</div>
@@ -411,6 +464,15 @@
     </div>
   </div>
 
+  <!-- purchase strip -->
+  <div class="purchase-strip reveal">
+    <p><strong>Packages and memberships can be purchased online.</strong> Choose your path below and buy directly — no waiting, no back and forth.</p>
+    <div class="purchase-strip-links">
+      <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="purchase-strip-link">Buy a Package →</a>
+      <a href="https://knottyophc.glossgenius.com/shop/memberships?tab=explore" target="_blank" class="purchase-strip-link">Join a Membership →</a>
+    </div>
+  </div>
+
   <div class="path-strip reveal">
     <div class="path-strip-icon">→</div>
     <p class="path-strip-text">Microloc maintenance requires precision every 6–8 weeks. <strong>À la carte</strong> works — but a package or membership means your spot is protected, your specialist knows your locs inside and out, and your rate is locked.</p>
@@ -455,15 +517,15 @@
       <a href="https://knottyophc.glossgenius.com/shop/packages" target="_blank" class="option-cta">Buy Package Online</a>
     </div>
     <div class="option-card premium">
-      <span class="option-badge">Best Value</span>
+      <span class="option-badge">1 Session Free</span>
       <p class="option-type">6-Month Package</p>
       <h3 class="option-name">6-Session Package</h3>
-      <p class="option-tagline">Six sessions. Six months of consistent, expert maintenance.</p>
+      <p class="option-tagline">Book 6, get 1 free. Six maintenance sessions for the price of five — your sixth is completely covered.</p>
       <div class="option-price">
         <div class="option-price-main">$1,020</div>
         <p class="option-price-note">one-time payment · $170 per session</p>
       </div>
-      <span class="option-savings">Save $180 vs à la carte</span>
+      <span class="option-savings">Your 6th session is free — $200+ value</span>
       <div class="option-perks">
         <p class="option-perks-label">Every Visit Includes</p>
         <div class="option-perk">Interlock retighten session</div>
@@ -612,6 +674,15 @@
 </footer>
 
 <script>
+  // Mobile drawer
+  function toggleDrawer() {
+    const drawer = document.getElementById('mobileDrawer');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; } });
+
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
