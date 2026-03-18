@@ -38,6 +38,49 @@
   .nav-book:hover { background: var(--gold); color: var(--deep-brown); }
   .nav-mobile-btn { display: none; background: none; border: none; color: var(--warm-brown); font-size: 1.6rem; cursor: pointer; padding: 0.2rem 0.4rem; line-height: 1; }
 
+  /* SERVICES DROPDOWN */
+  .nav-has-dropdown { position: relative; }
+  .nav-has-dropdown > a::after { content: ' ▾'; font-size: 0.55rem; opacity: 0.6; vertical-align: middle; }
+  .nav-dropdown {
+    display: none; position: absolute; top: calc(100% + 12px); left: 50%;
+    transform: translateX(-50%);
+    background: var(--deep-brown); border: 1px solid rgba(212,168,83,0.2);
+    border-top: 2px solid var(--gold); min-width: 210px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3); z-index: 300;
+  }
+  .nav-has-dropdown:hover .nav-dropdown { display: block; }
+  .nav-dropdown a {
+    display: block; padding: 0.85rem 1.4rem; text-decoration: none;
+    color: rgba(245,240,232,0.65); font-size: 0.7rem; letter-spacing: 0.14em;
+    text-transform: uppercase; border-bottom: 1px solid rgba(212,168,83,0.08);
+    transition: all 0.2s;
+  }
+  .nav-dropdown a:last-child { border-bottom: none; }
+  .nav-dropdown a:hover { color: var(--cream); background: rgba(212,168,83,0.08); padding-left: 1.8rem; }
+  .nav-dropdown a.coming-soon { opacity: 0.45; cursor: default; pointer-events: none; }
+  .nav-dropdown a.coming-soon::after { content: ' — soon'; font-size: 0.6rem; }
+
+  /* MOBILE SUBMENU */
+  .drawer-has-sub { border-bottom: 1px solid rgba(212,168,83,0.12); }
+  .drawer-parent-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 1.1rem 0; background: none; border: none; cursor: pointer;
+    color: rgba(245,240,232,0.75); font-family: 'Jost', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s;
+  }
+  .drawer-parent-btn:hover { color: var(--gold); }
+  .drawer-chevron { font-size: 0.7rem; transition: transform 0.3s; display: inline-block; }
+  .drawer-parent-btn[aria-expanded="true"] .drawer-chevron { transform: rotate(180deg); }
+  .drawer-submenu { list-style: none; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .drawer-submenu.open { max-height: 400px; }
+  .drawer-submenu li { border-top: 1px solid rgba(212,168,83,0.07); }
+  .drawer-submenu a {
+    display: block; padding: 0.85rem 0 0.85rem 1.2rem; text-decoration: none;
+    color: rgba(245,240,232,0.55); font-size: 0.78rem; letter-spacing: 0.12em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .drawer-submenu a:hover { color: var(--cream); }
+
   /* MOBILE DRAWER */
   .mobile-drawer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 200; }
   .mobile-drawer.open { display: block; }
@@ -215,7 +258,16 @@
   <a href="index.html" class="nav-logo">Knotty <em>Opulence</em></a>
   <ul class="nav-links">
     <li><a href="index.html#about">Meet Nay</a></li>
-    <li><a href="services-hub.html" class="active">Services</a></li>
+    <li class="nav-has-dropdown">
+      <a href="services-hub.html" class="active">Services</a>
+      <div class="nav-dropdown">
+        <a href="loc-love.html">Loc Love</a>
+        <a href="loose-natural.html">Loose Natural</a>
+        <a href="alopecia-care.html" class="coming-soon">Alopecia Care</a>
+        <a href="special-occasions.html">Special Occasions</a>
+        
+      </div>
+    </li>
     <li><a href="shop.html">✦ Shop Botanicals</a></li>
   </ul>
   <a href="https://knottyophc.glossgenius.com/" target="_blank" class="nav-book">Book Now</a>
@@ -229,7 +281,18 @@
     <button class="mobile-drawer-close" onclick="toggleDrawer()">✕</button>
     <ul class="mobile-drawer-links">
       <li><a href="index.html#about" onclick="toggleDrawer()">Meet Nay</a></li>
-      <li><a href="services-hub.html" onclick="toggleDrawer()">Services</a></li>
+      <li class="drawer-has-sub">
+        <button class="drawer-parent-btn" onclick="toggleSubMenu(this)" aria-expanded="false">
+          Services <span class="drawer-chevron">▾</span>
+        </button>
+        <ul class="drawer-submenu">
+          <li><a href="loc-love.html" onclick="toggleDrawer()">Loc Love</a></li>
+          <li><a href="loose-natural.html" onclick="toggleDrawer()">Loose Natural</a></li>
+          <li><a href="alopecia-care.html" onclick="toggleDrawer()" style="opacity:0.45;">Alopecia Care <span style="font-size:0.6rem;">— soon</span></a></li>
+          <li><a href="special-occasions.html" onclick="toggleDrawer()">Special Occasions</a></li>
+          
+        </ul>
+      </li>
       <li><a href="shop.html" onclick="toggleDrawer()">✦ Shop Botanicals</a></li>
     </ul>
     <a href="https://knottyophc.glossgenius.com/" target="_blank" class="mobile-drawer-book">Book Now</a>
@@ -293,14 +356,14 @@
     </a>
 
     <!-- SPECIAL OCCASIONS -->
-    <a href="special-occasions.html" class="cat-card special">
+    <a href="https://wa.me/529902807480?text=Hi%20Nay!%20I%27m%20interested%20in%20Special%20Occasion%20styling%20at%20Knotty%20Opulence.%20Can%20we%20set%20up%20a%20consultation%3F" target="_blank" class="cat-card special">
       <div class="cat-num">04</div>
       <div class="cat-overlay"></div>
       <div class="cat-content">
         <p class="cat-label">Event & Occasion Styling</p>
         <h3 class="cat-title">Special <em>Occasions</em></h3>
-        <p class="cat-desc">Weddings, quinceañeras, photoshoots, graduations. Your crown deserves to be as intentional as your event. All occasion bookings begin with a consultation.</p>
-        <span class="cat-cta">Explore Special Occasions <span class="cat-arrow">→</span></span>
+        <p class="cat-desc">Weddings, quinceañeras, photoshoots, graduations. Your crown deserves to be as intentional as your event. All bookings begin with a direct consultation — no online booking for this one.</p>
+        <span class="cat-cta">Contact for a Consult <span class="cat-arrow">→</span></span>
       </div>
     </a>
 
@@ -315,7 +378,7 @@
     <p>Starting a loc or microloc journey? After your install, choose a maintenance package or monthly membership — and your sixth session is free when you book six.</p>
   </div>
   <div class="packages-strip-btns">
-    <a href="services.html" class="pkg-btn-primary">View Packages & Memberships</a>
+    <a href="loc-love.html" class="pkg-btn-primary">View Loc Journey Packages</a>
     <a href="https://knottyophc.glossgenius.com/" target="_blank" class="pkg-btn-secondary">Book Your Install</a>
   </div>
 </div>
@@ -342,6 +405,12 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { document.getElementById('mobileDrawer').classList.remove('open'); document.body.style.overflow = ''; }
   });
+  function toggleSubMenu(btn) {
+    const submenu = btn.nextElementSibling;
+    const isOpen = submenu.classList.contains('open');
+    submenu.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
