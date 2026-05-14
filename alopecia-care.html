@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crown Restoration Program | Knotty Opulence Hair Care Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --deep-brown: #2C1A0E;
+      --warm-brown: #5C3A1E;
+      --gold: #C9A84C;
+      --gold-light: #E2C47A;
+      --gold-pale: #F5E9C8;
+      --cream: #FAF5EC;
+      --sage: #7A8C6E;
+      --terracotta: #C4622D;
+      --text-dark: #1E110A;
+      --text-mid: #4A2E18;
+      --white: #FFFFFF;
+      --near-black: #0E0705;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(14,7,5,0.95);
+      padding: 0 2.5rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: rgba(250,245,236,0.6);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    .nav-book {
+      background: var(--terracotta);
+      color: var(--cream);
+      text-decoration: none;
+      padding: 0.45rem 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.25s;
+    }
+    .nav-book:hover { background: var(--warm-brown); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0; bottom: 0;
+      background: var(--near-black);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      color: rgba(250,245,236,0.8);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .mobile-drawer a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      margin-top: 68px;
+      min-height: 92vh;
+      background: var(--near-black);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-bg-panel {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0.55;
+      filter: saturate(0.7);
+    }
+
+    .hero-bg-panel.after { opacity: 0.65; filter: saturate(0.85); }
+
+    .hero-divider-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+      z-index: 3;
+    }
+
+    .hero-labels {
+      position: absolute;
+      top: 2.5rem;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: space-around;
+      z-index: 4;
+      padding: 0 4rem;
+    }
+
+    .hero-label-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      background: rgba(14,7,5,0.7);
+      padding: 0.4rem 1rem;
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(14,7,5,0.97) 0%,
+        rgba(14,7,5,0.6) 45%,
+        rgba(14,7,5,0.2) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      padding: 0 3rem 5rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: block;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.5s;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); display: block; }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(250,245,236,0.75);
+      max-width: 540px;
+      line-height: 1.85;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.7s;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.9s;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: var(--gold);
+      color: var(--deep-brown);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: transparent;
+      border: 1px solid rgba(250,245,236,0.4);
+      color: var(--cream);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── TRUTH STRIP ─── */
+    .truth-strip {
+      background: var(--terracotta);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .truth-strip p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+      max-width: 780px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .truth-strip strong { font-style: normal; font-weight: 600; }
+
+    /* ─── SECTIONS SHARED ─── */
+    section { padding: 6rem 2.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      color: var(--deep-brown);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--terracotta); }
+    .section-title.light { color: var(--white); }
+    .section-title.light em { color: var(--gold-light); }
+
+    .gold-rule { width: 56px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+    .gold-rule.center { margin: 1.5rem auto; }
+
+    /* ─── UNDERSTAND SECTION ─── */
+    .understand-section { background: var(--cream); }
+
+    .understand-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .understand-text p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.95;
+      margin-bottom: 1.25rem;
+    }
+
+    .understand-text p strong { color: var(--deep-brown); font-weight: 600; }
+
+    .understand-callout {
+      background: var(--deep-brown);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .understand-callout p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .understand-image {
+      position: relative;
+    }
+
+    .understand-image img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .understand-image-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(44,26,14,0.9), transparent);
+      padding: 2rem 1.5rem 1.2rem;
+    }
+
+    .understand-image-label span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* ─── WHO THIS IS FOR ─── */
+    .who-section { background: var(--deep-brown); }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .who-card {
+      background: rgba(255,255,255,0.04);
+      padding: 2.5rem 2rem;
+      border-top: 2px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .who-card:hover { border-top-color: var(--gold); background: rgba(255,255,255,0.07); }
+
+    .who-card-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+
+    .who-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .who-card p {
+      font-size: 0.95rem;
+      color: rgba(250,245,236,0.7);
+      line-height: 1.85;
+    }
+
+    /* ─── VIDEO SECTION ─── */
+    .video-section { background: #0E0705; padding: 6rem 2.5rem; }
+
+    .video-section .section-title { color: var(--cream); }
+    .video-section .section-title em { color: var(--gold-light); }
+
+    .video-wrapper {
+      margin-top: 3rem;
+      position: relative;
+      max-width: 720px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-height: 640px;
+      background: #1a0f08;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-border {
+      position: absolute;
+      inset: -1px;
+      border: 1px solid rgba(201,168,76,0.3);
+      pointer-events: none;
+    }
+
+    .video-caption {
+      margin-top: 1.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    .video-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250,245,236,0.65);
+      line-height: 1.7;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      aspect-ratio: 9/16;
+      max-height: 640px;
+      background: #1a0f08;
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      cursor: pointer;
+    }
+
+    .video-placeholder-icon {
+      width: 72px;
+      height: 72px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-placeholder-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--gold);
+      margin-left: 4px;
+    }
+
+    .video-placeholder p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: rgba(201,168,76,0.6);
+      text-transform: uppercase;
+    }
+
+    /* ─── PROGRAM ─── */
+    .program-section { background: var(--cream); }
+
+    .program-intro {
+      max-width: 700px;
+      margin-bottom: 4rem;
+    }
+
+    .program-intro p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.95;
+      margin-top: 1rem;
+    }
+
+    .program-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+    }
+
+    .program-step {
+      background: var(--white);
+      padding: 0;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .program-step:hover { transform: translateY(-4px); }
+
+    .program-step-top {
+      background: var(--deep-brown);
+      padding: 2rem 2rem 1.5rem;
+      position: relative;
+    }
+
+    .program-step-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.25);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .step-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-top: 0.4rem;
+    }
+
+    .program-step-body { padding: 1.8rem 2rem; }
+
+    .program-step-body p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    .step-includes { list-style: none; }
+    .step-includes li {
+      font-size: 0.85rem;
+      color: var(--warm-brown);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .step-includes li::before { content: '✦'; color: var(--gold); font-size: 0.55rem; flex-shrink: 0; }
+
+    /* ─── BEFORE/AFTER ─── */
+    .transformation-section { background: #0E0705; padding: 6rem 2.5rem; }
+
+    .transformation-section .section-title { color: var(--cream); }
+    .transformation-section .section-title em { color: var(--gold-light); }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-top: 3rem;
+      max-width: 800px;
+    }
+
+    .ba-panel { position: relative; overflow: hidden; }
+
+    .ba-panel img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+      filter: saturate(0.85);
+    }
+    .ba-panel:hover img { transform: scale(1.03); }
+
+    .ba-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: rgba(14,7,5,0.85);
+      border: 1px solid rgba(201,168,76,0.35);
+      padding: 0.35rem 0.8rem;
+    }
+    .ba-tag span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .ba-caption {
+      margin-top: 2rem;
+      max-width: 700px;
+    }
+    .ba-caption p {
+      font-size: 0.95rem;
+      color: rgba(250,245,236,0.6);
+      line-height: 1.85;
+      font-style: italic;
+    }
+    .ba-caption strong { color: rgba(250,245,236,0.85); font-style: normal; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--deep-brown);
+      padding: 8rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.08);
+      pointer-events: none;
+    }
+
+    .cta-badge {
+      display: inline-block;
+      background: var(--terracotta);
+      color: var(--white);
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-section .section-title { color: var(--white); margin-bottom: 0.5rem; }
+    .cta-section .section-title em { color: var(--gold-light); }
+
+    .cta-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: rgba(250,245,236,0.65);
+      max-width: 520px;
+      margin: 0 auto 1rem;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      background: var(--gold);
+      color: var(--deep-brown);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .whatsapp-btn:hover { background: var(--gold-light); }
+    .whatsapp-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    .glossgenius-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .glossgenius-btn:hover { background: var(--gold); color: var(--deep-brown); }
+
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(250,245,236,0.4);
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--near-black);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(250,245,236,0.3);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-book { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-content { padding: 0 1.5rem 4rem; }
+
+      .hero-labels { padding: 0 1rem; }
+      .hero-label-tag { font-size: 0.55rem; padding: 0.3rem 0.6rem; }
+
+      .understand-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .understand-image { order: -1; }
+      .understand-image img { aspect-ratio: 4/3; }
+
+      .ba-grid { grid-template-columns: 1fr; max-width: 400px; }
+
+      .program-steps { grid-template-columns: 1fr; }
+
+      .cta-buttons { flex-direction: column; align-items: center; }
+
+      .hero-ctas { flex-direction: column; }
+
+      .video-container, .video-placeholder { aspect-ratio: 16/9; max-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Knotty <em>Opulence</em></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services-hub.html">Services</a></li>
+      <li><a href="loc-love.html">Loc Love</a></li>
+      <li><a href="alopecia-care.html" class="active">Crown Restoration</a></li>
+      <li><a href="special-occasions.html">Special Occasions</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    </ul>
+    <a href="https://knottyophcs.glossgenius.com/" class="nav-book" target="_blank">Book Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="index.html">Home</a>
+    <a href="services-hub.html">Services</a>
+    <a href="loc-love.html">Loc Love</a>
+    <a href="alopecia-care.html">Crown Restoration</a>
+    <a href="special-occasions.html">Special Occasions</a>
+    <a href="shop.html">Shop</a>
+    <a href="https://knottyophcs.glossgenius.com/" target="_blank">Book Now</a>
+  </div>
+
+  <!-- HERO — before/after split -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img class="hero-bg-panel" src="alopecia_-_Copy.jpeg" alt="Before — alopecia hair loss"/>
+      <img class="hero-bg-panel after" src="linda.jpeg" alt="After — Crown Restoration result"/>
+    </div>
+    <div class="hero-divider-line"></div>
+    <div class="hero-labels">
+      <div class="hero-label-tag">Before</div>
+      <div class="hero-label-tag">After</div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Knotty Opulence Hair Care Studio</span>
+      <h1 class="hero-title">
+        Crown<br/>
+        <em>Restoration<br/>Program</em>
+      </h1>
+      <p class="hero-sub">Hair loss is not the end of your story. For Black and Brown people experiencing thinning, breakage, or alopecia — this program was built specifically for you.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/529902807480?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20the%20Crown%20Restoration%20Program." class="btn-gold" target="_blank">Start with a Consultation</a>
+        <a href="#program" class="btn-outline">See the Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUTH STRIP -->
+  <div class="truth-strip">
+    <p>Hair loss in Black and Brown women is <strong>under-diagnosed, under-treated, and under-talked about.</strong> That changes here.</p>
+  </div>
+
+  <!-- UNDERSTAND -->
+  <section class="understand-section">
+    <div class="section-inner">
+      <div class="understand-grid">
+        <div class="understand-text reveal">
+          <span class="section-eyebrow">Why This Program Exists</span>
+          <h2 class="section-title">We see what<br/><em>others miss</em></h2>
+          <div class="gold-rule"></div>
+          <p>Alopecia and hair thinning in people with textured hair is often mishandled — or worse, ignored. Most stylists aren't trained for it. Most advice online isn't written for us. And most clients have spent years being told their hair loss is just "normal shedding."</p>
+          <p>It isn't. And you deserve a specialist who knows the difference.</p>
+          <p>The Crown Restoration Program was designed by a <strong>licensed natural hair care specialist with 20+ years of experience</strong> working with textured hair — including clients dealing with traction alopecia, stress-related shedding, hormonal thinning, and scalp inflammation.</p>
+          <p>This is not a quick fix. This is a structured, personalized program that works with your hair's biology, not against it.</p>
+          <div class="understand-callout">
+            <p>"Your crown is not broken. It's asking for something it hasn't been given yet."</p>
+          </div>
+        </div>
+        <div class="understand-image reveal">
+          <img src="linda.jpeg" alt="Crown Restoration client result — locs after alopecia care"/>
+          <div class="understand-image-label">
+            <span>Client result — Crown Restoration Program</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="who-section">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal" style="color:var(--gold)">Is This Program For You?</span>
+      <h2 class="section-title light reveal">You belong here <em>if…</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="who-grid">
+        <div class="who-card reveal">
+          <div class="who-card-icon">🪮</div>
+          <h4>You're experiencing hair loss</h4>
+          <p>Traction alopecia, stress shedding, hormonal thinning, postpartum hair loss, or general breakage that won't stop — this program addresses the root cause, not just the symptoms.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-card-icon">💆🏾</div>
+          <h4>Your scalp needs serious attention</h4>
+          <p>Itching, inflammation, buildup, or tenderness that no product has been able to fix. A healthy scalp is the foundation of everything, and we start there.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-card-icon">🌱</div>
+          <h4>You want to grow hair over thinning areas</h4>
+          <p>You've been told those areas won't grow back. We don't accept that without a thorough assessment. Many clients see real results with the right consistent care plan.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-card-icon">✂️</div>
+          <h4>You've been mishandled by other stylists</h4>
+          <p>Styles that were too tight, chemicals that damaged the scalp, locs that were maintained without checking the edges — you need a reset with someone who prioritizes your hair's health above everything.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-card-icon">🧭</div>
+          <h4>You're living abroad and struggling</h4>
+          <p>Hard water, humidity, unfamiliar products, and no local specialist who understands your hair — the expat experience is real and we account for it in your care plan.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-card-icon">👩🏾‍🦱</div>
+          <h4>You want to wear locs but have thinning edges</h4>
+          <p>Locs are possible even with alopecia — but they require a specialist-level approach. We assess your hair before recommending any loc journey for clients with hair loss concerns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal" style="color:var(--gold)">Real Results</span>
+      <h2 class="section-title reveal">See the <em>transformation</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="video-wrapper reveal">
+        <div class="video-container" id="videoContainer">
+          <!-- Upload your video to your GitHub repo as crown-restoration-video.mp4 and it will appear here -->
+          <video
+            id="transformationVideo"
+            controls
+            playsinline
+            preload="metadata"
+            poster="linda.jpeg"
+          >
+            <source src="crown-restoration-video.mp4" type="video/mp4">
+            Your browser does not support this video.
+          </video>
+          <div class="video-border"></div>
+        </div>
+        <div class="video-caption">
+          <p>"This is what's possible when hair loss is treated with the right care, the right products, and the right specialist. Every transformation starts with one consultation."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM STEPS -->
+  <section class="program-section" id="program">
+    <div class="section-inner">
+      <div class="program-intro reveal">
+        <span class="section-eyebrow">The Program</span>
+        <h2 class="section-title">How the Crown<br/><em>Restoration Program</em> works</h2>
+        <div class="gold-rule"></div>
+        <p>This is a structured, multi-step program — not a single appointment. Every step is designed to build on the last, creating lasting results rather than temporary improvement. All Crown Restoration clients begin with a consultation before any service is scheduled.</p>
+      </div>
+
+      <div class="program-steps">
+
+        <div class="program-step reveal">
+          <div class="program-step-top">
+            <div class="step-num">01</div>
+            <div class="step-name">Assessment</div>
+            <div class="step-headline">Understanding<br/>your crown</div>
+          </div>
+          <div class="program-step-body">
+            <p>We begin with a thorough scalp and hair assessment. No assumptions, no generic advice — just an honest, professional evaluation of what's happening and why.</p>
+            <ul class="step-includes">
+              <li>Scalp health evaluation</li>
+              <li>Hair loss pattern assessment</li>
+              <li>Lifestyle & product review</li>
+              <li>Custom care plan development</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-step reveal">
+          <div class="program-step-top">
+            <div class="step-num">02</div>
+            <div class="step-name">Scalp Restoration</div>
+            <div class="step-headline">Reset the<br/>foundation</div>
+          </div>
+          <div class="program-step-body">
+            <p>A healthy scalp is non-negotiable. We address inflammation, buildup, dryness, and tension damage — clearing the way for new growth and healthier existing hair.</p>
+            <ul class="step-includes">
+              <li>Deep scalp treatment</li>
+              <li>Inflammation-targeted care</li>
+              <li>Botanical oil application</li>
+              <li>Tension release & scalp massage</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-step reveal">
+          <div class="program-step-top">
+            <div class="step-num">03</div>
+            <div class="step-name">Growth Support</div>
+            <div class="step-headline">Nurture what's<br/>coming back</div>
+          </div>
+          <div class="program-step-body">
+            <p>We support new growth with targeted treatments and protective styling that minimizes stress on fragile areas while your hair rebuilds its strength and density.</p>
+            <ul class="step-includes">
+              <li>Growth-phase protective styling</li>
+              <li>Targeted botanical treatments</li>
+              <li>At-home care protocol</li>
+              <li>Product guidance for your climate</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="program-step reveal">
+          <div class="program-step-top">
+            <div class="step-num">04</div>
+            <div class="step-name">Maintenance</div>
+            <div class="step-headline">Keep the<br/>crown thriving</div>
+          </div>
+          <div class="program-step-body">
+            <p>Once restoration is underway, we transition into a maintenance rhythm that sustains your results and continues building hair health over time.</p>
+            <ul class="step-includes">
+              <li>Ongoing scalp health monitoring</li>
+              <li>Membership pathway available</li>
+              <li>Seasonal adjustments for Mérida climate</li>
+              <li>Long-term hair growth strategy</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="transformation-section">
+    <div class="section-inner">
+      <span class="section-eyebrow reveal" style="color:var(--gold)">Client Transformation</span>
+      <h2 class="section-title reveal">Before & <em>After</em></h2>
+      <div class="gold-rule reveal"></div>
+
+      <div class="ba-grid reveal">
+        <div class="ba-panel">
+          <img src="alopecia_-_Copy.jpeg" alt="Before — significant thinning at crown"/>
+          <div class="ba-tag"><span>Before</span></div>
+        </div>
+        <div class="ba-panel">
+          <img src="linda.jpeg" alt="After — restored locs and healthy edges"/>
+          <div class="ba-tag"><span>After</span></div>
+        </div>
+      </div>
+      <div class="ba-caption reveal">
+        <p><strong>This is a real client.</strong> She came in with significant thinning at the crown and edges. Through consistent, specialist-led care — scalp treatment, protective styling, and a personalized home routine — she regained density and confidence. Results like these take time and commitment. That's exactly what this program provides.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <div class="cta-badge reveal">Crown Restoration Program</div>
+      <h2 class="section-title reveal">Your hair can<br/><em>come back.</em></h2>
+      <div class="gold-rule center reveal"></div>
+      <p class="cta-sub reveal">The first step is a consultation — no pressure, no commitment, just an honest conversation about your hair and what's possible.</p>
+
+      <div class="cta-buttons reveal">
+        <a href="https://wa.me/529902807480?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20the%20Crown%20Restoration%20Program." class="whatsapp-btn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.524 5.847L.057 23.882l6.197-1.625A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.015-1.378l-.36-.214-3.727.977.995-3.63-.235-.373A9.791 9.791 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+          Message Us on WhatsApp
+        </a>
+        <a href="https://knottyophcs.glossgenius.com/" class="glossgenius-btn" target="_blank" rel="noopener">
+          Book via GlossGenius
+        </a>
+      </div>
+      <p class="cta-note reveal">Crown Restoration clients begin with a consultation. Availability is limited — reach out early.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Knotty Opulence Hair Care Studio</div>
+    <p class="footer-sub">Mérida, Yucatán, México &nbsp;·&nbsp; Serving the international community</p>
+  </footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('mobileDrawer');
+    hamburger.addEventListener('click', () => drawer.classList.toggle('open'));
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
