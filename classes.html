@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Classes | Knotty Opulence Hair Care Studio</title>
+<meta name="description" content="Hands on natural hair classes in Mérida with Knotty Opulence Hair Care Studio. Learn to care for textured hair with 20+ years of professional guidance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #3B2416;
+    --brown-soft: #5A3A26;
+    --gold: #C9A55C;
+    --gold-deep: #A8843D;
+    --cream: #F6EEDF;
+    --olive: #5E6B3A;
+    --clay: #B8664A;
+    --ink: #2A1A10;
+    --display: "Cinzel", Georgia, serif;
+    --body: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+
+  /* Nav */
+  .nav {
+    background: var(--brown);
+    color: var(--cream);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+  .nav .brand { font-family: var(--display); color: var(--gold); text-decoration: none; font-size: 1.1rem; letter-spacing: .04em; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; }
+  .nav ul a { text-decoration: none; font-size: 1.05rem; }
+  .nav ul a[aria-current="page"] { color: var(--gold); border-bottom: 1px solid var(--gold); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--gold); color: var(--gold); font: inherit; padding: .2rem .7rem; cursor: pointer; }
+  @media (max-width: 760px) {
+    .menu-btn { display: block; }
+    .nav { flex-wrap: wrap; }
+    .nav ul { display: none; width: 100%; flex-direction: column; gap: .8rem; padding-top: 1rem; }
+    .nav ul.open { display: flex; }
+  }
+
+  /* Intro */
+  .intro { background: var(--brown); color: var(--cream); padding: 4rem 1.5rem 5rem; }
+  .intro-inner { max-width: 1100px; margin: 0 auto; }
+  .intro h1 { font-family: var(--display); font-weight: 500; color: var(--gold); font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.1; margin: 0 0 1rem; }
+  .intro p { max-width: 38em; margin: 0; font-size: 1.3rem; }
+
+  /* Confirmation */
+  .confirm { max-width: 1100px; margin: -2.5rem auto 0; padding: 0 1.5rem; position: relative; }
+  .confirm div { background: var(--olive); color: var(--cream); padding: 1.4rem 1.6rem; border-left: 4px solid var(--gold); }
+  .confirm strong { font-family: var(--display); font-weight: 500; display: block; font-size: 1.2rem; margin-bottom: .3rem; }
+
+  /* Class list */
+  .classes { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 5rem; display: grid; gap: 4.5rem; }
+  .class { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 3rem; align-items: start; }
+  .class:nth-child(even) .class-img { order: 2; }
+  .class-img img { width: 100%; border: 1px solid var(--gold); }
+  .class h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.15; margin: 0 0 .4rem; color: var(--brown); }
+  .when { font-style: italic; color: var(--brown-soft); margin: 0 0 1.2rem; font-size: 1.25rem; }
+  .class p { margin: 0 0 1rem; max-width: 34em; }
+  .learn { margin: 0 0 1.5rem; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .learn li { border: 1px solid var(--olive); color: var(--olive); padding: .15rem .8rem; font-size: 1.05rem; }
+  .details { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 0 0 1.8rem; padding: 1.2rem 0; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+  .details dt { font-size: 1rem; color: var(--brown-soft); }
+  .details dd { margin: 0; font-family: var(--display); font-size: 1.15rem; color: var(--brown); }
+  .price-note { font-size: 1.05rem; color: var(--clay); }
+  .actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .btn { display: inline-block; text-decoration: none; font-family: var(--display); font-size: 1rem; letter-spacing: .05em; padding: .9rem 1.6rem; border: 1px solid var(--brown); transition: background .2s, color .2s; }
+  .btn-primary { background: var(--brown); color: var(--gold); }
+  .btn-primary:hover { background: var(--ink); }
+  .btn-quiet { color: var(--brown); }
+  .btn-quiet:hover { background: var(--brown); color: var(--cream); }
+  .status { font-style: italic; color: var(--clay); }
+
+  @media (max-width: 820px) {
+    .class { grid-template-columns: 1fr; gap: 1.8rem; }
+    .class:nth-child(even) .class-img { order: 0; }
+  }
+
+  footer { background: var(--brown); color: var(--cream); text-align: center; padding: 2.5rem 1.5rem; font-size: 1.05rem; }
+  footer a { color: var(--gold); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="index.html">Knotty Opulence</a>
+  <button class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="classes.html" aria-current="page">Classes</a></li>
+    <li><a href="https://knottyophcs.glossgenius.com">Book</a></li>
+  </ul>
+</nav>
+
+<header class="intro">
+  <div class="intro-inner">
+    <h1>Classes</h1>
+    <p>Small, hands on sessions that teach you to care for textured hair at home, guided by a licensed specialist with over 20 years behind the chair.</p>
+  </div>
+</header>
+
+<div class="confirm" id="confirm" hidden>
+  <div role="status">
+    <strong id="confirm-title">You're registered.</strong>
+    <span id="confirm-text">Your receipt is on its way by email. We'll send class details and the studio address on WhatsApp before your session.</span>
+  </div>
+</div>
+
+<main class="classes" id="class-list"></main>
+
+<footer>
+  <p>Questions about a class? Message us on <a href="https://wa.me/529902807480">WhatsApp</a>.</p>
+  <p>Knotty Opulence Hair Care Studio, Mérida, Yucatán</p>
+</footer>
+
+<script>
+/*
+  HOW TO ADD OR UPDATE A CLASS
+  Each class is one block below. To add a class, copy a block and change the details.
+  status options:
+    "open"     shows the Register button with your Stripe link
+    "full"     shows "This session is full" and a waitlist button
+    "upcoming" shows "Registration opens soon" and a WhatsApp button
+  earlyBird: set a date (YYYY-MM-DD). Until that date, the early bird price and link show.
+             After it passes, the standard price and link show automatically.
+*/
+const CLASSES = [
+  {
+    id: "dads-do-hair",
+    title: "Dads Do Hair",
+    when: "Saturday, November 28, 2026, 10:00 am to 2:00 pm",
+    image: "images/dads-do-hair.png",
+    imageAlt: "Dads Do Hair class flyer showing a father styling his daughter's natural hair",
+    description: [
+      "A hands on group class for Dads who want to learn, or sharpen, their hair skills. Bring your child and take them through the full process yourself, from wash day to a finished style, with professional guidance at every step.",
+      "Our team walks you through washing and detangling, then braids, ponytails, twists, and buns. You'll also learn how to set up at home without a salon sink or chair: simple modifications, the tools that make it easier, and which products to reach for.",
+      "Light snacks and a midday break are included. Bring a tablet or quiet activity to keep your child comfortable. Children under 4 are welcome by approval, so message us on WhatsApp first."
+    ],
+    learn: ["Washing and detangling", "Braids", "Ponytails", "Twists", "Buns", "At home setup", "Product guidance"],
+    details: [
+      { label: "Group size", value: "Up to 10 Dads" },
+      { label: "Who attends", value: "Dad + child" },
+      { label: "Child ages", value: "4 to 12" },
+      { label: "Location", value: "Knotty Opulence Hair Care Studio at Ixchel-Balam Sanctuary Campus" }
+    ],
+    status: "open",
+    earlyBird: { until: "2026-11-06", price: "$95 USD", link: "https://buy.stripe.com/9B628q84n0zz2xtdnC6Zy00" },
+    standard: { price: "$125 USD", link: "https://buy.stripe.com/9B628q84n0zz2xtdnC6Zy00" },
+    priceNote: "Early bird pricing ends November 6. Makes a thoughtful holiday gift.",
+    buttonText: "Register now"
+  },
+  {
+    id: "crown-fundamentals",
+    title: "Crown Fundamentals",
+    when: "New dates coming in 2027",
+    image: "images/crown-fundamentals.png",
+    imageAlt: "Crown Fundamentals class",
+    description: [
+      "The foundations of caring for natural hair at home, taught step by step."
+    ],
+    learn: [],
+    details: [],
+    status: "upcoming",
+    standard: { price: "", link: "" },
+    priceNote: "",
+    buttonText: ""
+  }
+];
+
+const WHATSAPP = "https://wa.me/529902807480";
+
+function currentPrice(c) {
+  if (c.earlyBird && c.earlyBird.until) {
+    const end = new Date(c.earlyBird.until + "T23:59:59");
+    if (new Date() <= end) return { ...c.earlyBird, isEarly: true };
+  }
+  return { ...c.standard, isEarly: false };
+}
+
+function el(tag, attrs = {}, children = []) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+  }
+  children.forEach(ch => ch && n.appendChild(ch));
+  return n;
+}
+
+function renderClass(c) {
+  const p = currentPrice(c);
+  const body = el("div");
+  body.appendChild(el("h2", { text: c.title }));
+  body.appendChild(el("p", { class: "when", text: c.when }));
+  c.description.forEach(t => body.appendChild(el("p", { text: t })));
+
+  if (c.learn.length) {
+    body.appendChild(el("ul", { class: "learn", "aria-label": "What you'll learn" },
+      c.learn.map(t => el("li", { text: t }))));
+  }
+
+  const rows = [...c.details];
+  if (p.price && c.status === "open") rows.unshift({ label: p.isEarly ? "Early bird price" : "Price", value: p.price });
+  if (rows.length) {
+    const dl = el("dl", { class: "details" });
+    rows.forEach(r => dl.appendChild(el("div", {}, [el("dt", { text: r.label }), el("dd", { text: r.value })])));
+    body.appendChild(dl);
+  }
+  if (c.priceNote && c.status === "open" && p.isEarly) body.appendChild(el("p", { class: "price-note", text: c.priceNote }));
+
+  const actions = el("div", { class: "actions" });
+  if (c.status === "open" && p.link) {
+    actions.appendChild(el("a", { class: "btn btn-primary", href: p.link, text: c.buttonText || "Register now" }));
+    actions.appendChild(el("a", { class: "btn btn-quiet", href: WHATSAPP, text: "Ask a question" }));
+  } else if (c.status === "full") {
+    actions.appendChild(el("span", { class: "status", text: "This session is full." }));
+    actions.appendChild(el("a", { class: "btn btn-quiet", href: WHATSAPP + "?text=" + encodeURIComponent("Please add me to the waitlist for " + c.title), text: "Join the waitlist" }));
+  } else {
+    actions.appendChild(el("span", { class: "status", text: "Registration opens soon." }));
+    actions.appendChild(el("a", { class: "btn btn-quiet", href: WHATSAPP + "?text=" + encodeURIComponent("Please let me know when " + c.title + " opens"), text: "Get notified" }));
+  }
+  body.appendChild(actions);
+
+  const img = el("img", { src: c.image, alt: c.imageAlt, loading: "lazy" });
+  img.onerror = () => img.parentElement.remove();
+  const figure = el("figure", { class: "class-img", style: "margin:0" }, [img]);
+
+  return el("article", { class: "class", id: c.id }, [figure, body]);
+}
+
+const list = document.getElementById("class-list");
+CLASSES.forEach(c => list.appendChild(renderClass(c)));
+
+// Confirmation after Stripe redirect: classes.html?registered=dads-do-hair
+const registered = new URLSearchParams(location.search).get("registered");
+if (registered) {
+  const match = CLASSES.find(c => c.id === registered);
+  document.getElementById("confirm").hidden = false;
+  if (match) document.getElementById("confirm-title").textContent = "You're registered for " + match.title + ".";
+}
+
+// Mobile menu
+const btn = document.querySelector(".menu-btn");
+const links = document.getElementById("nav-links");
+btn.addEventListener("click", () => {
+  const open = links.classList.toggle("open");
+  btn.setAttribute("aria-expanded", open);
+});
+</script>
+</body>
+</html>
