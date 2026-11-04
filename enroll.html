@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll | OPS Academy Certification by Knotty Opulence</title>
+<meta name="description" content="Enrollment packet and form for the OPS Academy Certification founding cohort: 216 hours over 18 weeks in Mérida, México. Only 3 seats.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --paper: #FAF7F2;
+    --deep: #2C1810;
+    --rich: #4A2C1A;
+    --terracotta: #C4622D;
+    --gold: #D4A853;
+    --gold-deep: #9A7420;
+    --sage: #4A5940;
+    --ink: #1A1208;
+    --mid: #3D2B1A;
+    --soft: #6E5A4C;
+    --line: rgba(154,116,32,0.22);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+  img { max-width: 100%; display: block; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; }
+
+  /* NAV */
+  .site-nav { position: fixed; top: 0; width: 100%; z-index: 200; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(26,18,8,0.96); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(212,168,83,0.15); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--cream); text-decoration: none; letter-spacing: 0.04em; }
+  .nav-logo em { font-style: italic; color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { text-decoration: none; color: rgba(245,240,232,0.6); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; transition: color 0.25s; }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-links a.shop-link { color: var(--gold); border: 1px solid rgba(212,168,83,0.35); padding: 0.3rem 0.8rem; }
+  .nav-links a.shop-link:hover { background: var(--gold); color: var(--deep); }
+  .nav-book { background: var(--terracotta); color: var(--cream); text-decoration: none; padding: 0.5rem 1.3rem; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 500; transition: background 0.25s; }
+  .nav-book:hover { background: var(--rich); }
+  .nav-mobile-menu { display: none; background: none; border: none; color: var(--cream); font-size: 1.4rem; cursor: pointer; }
+  .nav-has-dropdown { position: relative; }
+  .nav-has-dropdown > a::after { content: ' \25BE'; font-size: 0.55rem; opacity: 0.6; }
+  .nav-dropdown { display: none; position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%); background: var(--deep); border: 1px solid rgba(212,168,83,0.2); border-top: 2px solid var(--gold); min-width: 200px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .nav-has-dropdown:hover .nav-dropdown { display: block; }
+  .nav-dropdown a { display: block; padding: 0.85rem 1.4rem; border-bottom: 1px solid rgba(212,168,83,0.08); }
+  .nav-dropdown a:last-child { border-bottom: none; }
+  .mobile-drawer { display: none; position: fixed; inset: 0; z-index: 250; }
+  .mobile-drawer.open { display: block; }
+  .mobile-drawer-overlay { position: absolute; inset: 0; background: rgba(26,10,5,0.7); }
+  .mobile-drawer-panel { position: absolute; top: 0; right: 0; width: 78%; max-width: 320px; height: 100%; background: var(--deep); border-left: 1px solid rgba(212,168,83,0.2); padding: 5rem 2.5rem 3rem; display: flex; flex-direction: column; }
+  .mobile-drawer-panel a { color: rgba(245,240,232,0.75); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.85rem 0; border-bottom: 1px solid rgba(212,168,83,0.08); }
+  .mobile-drawer-panel a.mobile-drawer-book { display: inline-block; margin-top: 2rem; background: var(--terracotta); color: var(--cream); padding: 0.85rem 1.5rem; text-align: center; border: none; }
+
+  /* HERO */
+  .hero { background: #0A0A0A; padding: 110px 40px 90px; text-align: center; position: relative; overflow: hidden; }
+  /* FOOTER */
+  .site-footer { background: var(--ink); padding: 60px 40px 40px; text-align: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--cream); display: block; }
+  .footer-logo em { font-style: italic; color: var(--gold); }
+  .footer-sub { font-size: 0.75rem; color: rgba(245,240,232,0.4); margin-bottom: 2rem; display: block; }
+  .footer-links { display: flex; gap: 1.6rem; justify-content: center; list-style: none; margin-bottom: 2rem; flex-wrap: wrap; }
+  .footer-links a { text-decoration: none; color: rgba(245,240,232,0.5); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.28); }
+  .hero { background: #0A0A0A; padding: 110px 40px 80px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(212,168,83,0.14), transparent 62%); }
+  .hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+  .hero-logo { width: clamp(180px, 30vw, 260px); height: auto; margin: 0 auto 1.6rem; border-radius: 50%; -webkit-mask-image: radial-gradient(circle, #000 62%, transparent 71%); mask-image: radial-gradient(circle, #000 62%, transparent 71%); }
+  .eyebrow { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.4rem, 7vw, 4.6rem); line-height: 1.02; color: var(--cream); }
+  .hero h1 span { display: block; font-style: italic; color: var(--gold); }
+  .hero p:not(.eyebrow) { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.4vw, 1.35rem); font-style: italic; color: rgba(245,240,232,0.72); margin: 1.4rem auto 2rem; }
+  .btn { display: inline-block; background: var(--deep); color: var(--cream); text-decoration: none; padding: 0.95rem 1.9rem; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; border: none; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.25s; }
+  .btn:hover { background: var(--terracotta); }
+  .btn-gold { background: var(--gold); color: var(--deep); }
+  .btn-gold:hover { background: var(--cream); }
+  .btn-big { padding: 1.15rem 2.4rem; font-size: 0.85rem; }
+  .glance { background: var(--deep); padding: 0 40px 50px; }
+  .glance-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(212,168,83,0.25); transform: translateY(-30px); background: var(--deep); }
+  .glance-grid div { padding: 1.4rem 1rem; text-align: center; border-right: 1px solid rgba(212,168,83,0.18); }
+  .glance-grid div:last-child { border-right: none; }
+  .g-num { display: block; font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; line-height: 1; color: var(--gold); }
+  .g-lbl { display: block; font-size: 0.82rem; color: rgba(245,240,232,0.7); margin-top: 0.35rem; }
+  .packet { max-width: 860px; margin: 0 auto; padding: 70px 40px 40px; }
+  .packet-intro { text-align: center; color: var(--soft); margin-bottom: 2.4rem; }
+  .sec { border-top: 1px solid var(--line); }
+  .sec:last-of-type { border-bottom: 1px solid var(--line); }
+  .sec summary { cursor: pointer; list-style: none; padding: 1.3rem 0; display: flex; align-items: baseline; gap: 1rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 1.8rem); color: var(--ink); }
+  .sec summary::-webkit-details-marker { display: none; }
+  .sec summary::after { content: '+'; margin-left: auto; color: var(--gold-deep); font-family: 'Jost', sans-serif; font-size: 1.3rem; }
+  .sec[open] summary::after { content: '\2212'; }
+  .sec summary .n { font-size: 1rem; color: var(--gold-deep); font-family: 'Jost', sans-serif; letter-spacing: 0.08em; }
+  .sec-body { padding: 0 0 2rem; color: var(--mid); }
+  .sec-body p { margin-bottom: 1rem; }
+  .sec-body h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.25rem; color: var(--rich); margin: 1.4rem 0 0.5rem; }
+  .sec-body ul { list-style: none; margin-bottom: 1rem; }
+  .sec-body ul li { padding: 0.35rem 0 0.35rem 1.3rem; position: relative; }
+  .sec-body ul li::before { content: ''; position: absolute; left: 0; top: 0.9rem; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .sig { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--rich); }
+  .sec-body strong, .plan strong { font-weight: 500; color: var(--ink); }
+  .note { background: rgba(196,98,45,0.07); border-left: 3px solid var(--terracotta); padding: 0.9rem 1.1rem; }
+  .facts div { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+  .facts dt { color: var(--gold-deep); font-weight: 500; }
+  .steps { padding-left: 1.3rem; margin-bottom: 1rem; }
+  .steps li { padding: 0.3rem 0; }
+  .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 0.4rem 0 1.2rem; }
+  .days div { background: var(--paper); border: 1px solid var(--line); padding: 1rem; }
+  .days b { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold-deep); font-weight: 600; }
+  .days span { font-size: 0.9rem; }
+  .units { list-style: none; counter-reset: u; }
+  .units li { counter-increment: u; display: grid; grid-template-columns: 56px 1fr; grid-template-rows: auto auto auto; column-gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .units li::before { content: counter(u, decimal-leading-zero); grid-row: 1 / 4; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; line-height: 1; color: var(--gold-deep); }
+  .units .u-wk { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--terracotta); }
+  .units b { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); }
+  .units span:last-child { font-size: 0.92rem; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0 1.2rem; }
+  .plans.two { grid-template-columns: repeat(2, 1fr); }
+  .plan { background: var(--paper); border: 1px solid var(--line); padding: 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .plan h5 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-deep); }
+  .plan .amt { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; line-height: 1; color: var(--ink); margin: 0; }
+  .plan p { font-size: 0.9rem; margin: 0; }
+  .plan .btn { margin-top: auto; text-align: center; }
+  .plan.feat { background: var(--deep); border-color: var(--deep); }
+  .plan.feat h5 { color: var(--gold); }
+  .plan.feat .amt, .plan.feat p { color: var(--cream); }
+  .enroll { background: var(--deep); color: var(--cream); padding: 80px 40px; }
+  .enroll-inner { max-width: 760px; margin: 0 auto; }
+  .enroll h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2rem, 5vw, 3rem); text-align: center; }
+  .enroll-lead { text-align: center; color: rgba(245,240,232,0.72); margin: 0.8rem auto 2.4rem; max-width: 560px; }
+  form label { display: block; font-size: 0.85rem; letter-spacing: 0.04em; color: var(--gold); margin-bottom: 1.2rem; }
+  form input:not([type=checkbox]), form select, form textarea { display: block; width: 100%; margin-top: 0.4rem; background: rgba(245,240,232,0.06); border: 1px solid rgba(212,168,83,0.35); color: var(--cream); padding: 0.8rem 0.9rem; font-family: 'Jost', sans-serif; font-size: 1rem; border-radius: 0; }
+  form select option { color: var(--ink); }
+  form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  form ::placeholder { color: rgba(245,240,232,0.35); }
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.2rem; }
+  .ack { border: 1px solid rgba(212,168,83,0.35); padding: 1.2rem 1.4rem 0.4rem; margin: 0.6rem 0 1.6rem; }
+  .ack legend { padding: 0 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--gold); }
+  label.check { display: flex; gap: 0.8rem; align-items: flex-start; color: rgba(245,240,232,0.88); font-size: 0.95rem; letter-spacing: 0; line-height: 1.5; cursor: pointer; }
+  label.check input { width: 20px; height: 20px; flex-shrink: 0; margin-top: 0.15rem; accent-color: var(--gold); }
+  .sig-input { font-family: 'Cormorant Garamond', serif !important; font-style: italic; font-size: 1.4rem !important; }
+  .form-error { background: rgba(196,98,45,0.25); border-left: 3px solid var(--terracotta); padding: 0.8rem 1rem; margin-bottom: 1.2rem; }
+  form .btn { width: 100%; background: var(--gold); color: var(--deep); }
+  form .btn:hover { background: var(--cream); }
+  .invalid { border-color: var(--terracotta) !important; }
+  .next-step { text-align: center; border: 1px solid rgba(212,168,83,0.35); padding: 2.4rem 1.6rem; }
+  .next-step h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2rem; color: var(--gold); }
+  .next-step p { color: rgba(245,240,232,0.8); margin: 0.8rem 0 1.6rem; }
+  .next-step .small { font-size: 0.85rem; margin-top: 1.4rem; }
+  .next-step a:not(.btn) { color: var(--gold); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .nav-mobile-menu { display: block; } .site-nav { padding: 0 20px; }
+    .hero { padding: 100px 20px 70px; } .glance, .packet, .enroll { padding-left: 20px; padding-right: 20px; }
+    .glance-grid { grid-template-columns: 1fr 1fr; }
+    .glance-grid div:nth-child(2) { border-right: none; }
+    .glance-grid div:nth-child(-n+2) { border-bottom: 1px solid rgba(212,168,83,0.18); }
+    .days, .plans, .plans.two, .field-grid { grid-template-columns: 1fr; }
+    .facts div { grid-template-columns: 90px 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">Knotty <em>Opulence</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Meet Nay</a></li>
+    <li class="nav-has-dropdown">
+      <a href="services-hub.html">Services</a>
+      <div class="nav-dropdown">
+        <a href="loc-love.html">Loc Love</a>
+        <a href="loose-natural.html">Loose Natural</a>
+        <a href="alopecia-care.html">Alopecia Care</a>
+        <a href="special-occasions.html">Special Occasions</a>
+      </div>
+    </li>
+    <li><a href="classes.html" >Classes</a></li>
+    <li><a href="shop.html" class="shop-link">✦ Shop Botanicals</a></li>
+  </ul>
+  <a href="https://knottyophcs.glossgenius.com/" class="nav-book" target="_blank" rel="noopener">Book Now</a>
+  <button class="nav-mobile-menu" onclick="toggleDrawer()" aria-label="Open menu">☰</button>
+</nav>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="mobile-drawer-panel">
+    <a href="index.html#about" onclick="toggleDrawer()">Meet Nay</a>
+    <a href="services-hub.html" onclick="toggleDrawer()">Services</a>
+    <a href="classes.html" onclick="toggleDrawer()">Classes</a>
+    <a href="shop.html" onclick="toggleDrawer()">✦ Shop Botanicals</a>
+    <a href="https://knottyophcs.glossgenius.com/" target="_blank" rel="noopener" class="mobile-drawer-book">Book Now</a>
+  </div>
+</div>
+
+
+<header class="hero">
+  <div class="hero-inner">
+    <img class="hero-logo" src="ops-academy-logo.jpg" alt="OPS Academy by Knotty Opulence logo: Crown Care, Hands On Training, Legacy Building" width="700" height="700">
+    <p class="eyebrow">Founding Cohort · January 2027</p>
+    <h1>The Crown Keeper's <span>Enrollment Packet</span></h1>
+    <p>Ancestral crownkeeping. Practical skills. Portable legacy.</p>
+    <a class="btn btn-gold" href="#enroll">Begin enrollment</a>
+  </div>
+</header>
+
+<section class="glance">
+  <div class="glance-grid">
+    <div><span class="g-num">216</span><span class="g-lbl">scheduled hours</span></div>
+    <div><span class="g-num">18</span><span class="g-lbl">weeks</span></div>
+    <div><span class="g-num">3</span><span class="g-lbl">training days a week</span></div>
+    <div><span class="g-num">3</span><span class="g-lbl">seats, residency available</span></div>
+  </div>
+</section>
+
+<main class="packet">
+  <p class="packet-intro">Open each section to read the full packet. When you are ready, complete the enrollment form at the bottom of this page.</p>
+
+  <details class="sec" open>
+    <summary><span class="n">01</span> Welcome</summary>
+    <div class="sec-body">
+      <p>Welcome to the founding cohort of the OPS Academy Certification. You are one of only three students chosen to begin this work with me in January 2027.</p>
+      <p>OPS Academy is the training and education arm of Knotty Opulence. OPS stands for Operational Precision and Skill. Here, crownkeeping is taught as it was always meant to be held: as an ancestral practice, a practical skill, and a legacy you can carry anywhere.</p>
+      <p>This knowledge was ours long before anyone issued a license for it. Braiding, locking, and caring for textured hair live in our hands and have been passed down through generations of Black Women. When you learn here, you invest in a Black Woman's vision and in a living lineage of knowledge.</p>
+      <p>I have been doing hair since I was 14 and have been licensed since 2011. For more than 20 years, my hands have learned what textured hair needs. Now it is time to pass that on.</p>
+      <p class="sig">With love and intention,<br>Nay, Founder, Knotty Opulence and OPS Academy</p>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">02</span> Program at a glance</summary>
+    <div class="sec-body">
+      <dl class="facts">
+        <div><dt>Program</dt><dd>OPS Academy Certification: The Crown Keeper's Training</dd></div>
+        <div><dt>Length</dt><dd>216 scheduled hours over 18 weeks</dd></div>
+        <div><dt>Schedule</dt><dd>3 training days a week, up to 4 hours a day. Training days are set with the cohort once enrollment closes, based on student availability.</dd></div>
+        <div><dt>Start</dt><dd>January 2027. Exact date shared with enrolled students.</dd></div>
+        <div><dt>Cohort</dt><dd>3 students</dd></div>
+        <div><dt>Location</dt><dd>Knotty Opulence Hair Care Studio, Ixchel-Balam Sanctuary Campus, Mérida, Yucatán</dd></div>
+        <div><dt>Materials</dt><dd>The Crown Keeper's Learning Workbook and the Crown Keeper Training Planner</dd></div>
+        <div><dt>Taught by</dt><dd>Nay, founder of Knotty Opulence</dd></div>
+      </dl>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">03</span> What this program is, and is not</summary>
+    <div class="sec-body">
+      <p>The OPS Academy Certification is our complete training program in crownkeeping, taught in a set order and finished with a full assessment of your work.</p>
+      <h4>What it is</h4>
+      <ul>
+        <li>Professional training, practiced on mannequins and on other people's textured hair: natural hair, children's hair, extension braiding, sew ins, and locs</li>
+        <li>An ancestral practice, taught with its cultural and spiritual roots intact and without assuming a shared belief</li>
+        <li>A transferable skill and a foundation for further education or income, subject to the laws where you work</li>
+        <li>A complete program on its own: no class is required before you enroll</li>
+      </ul>
+      <h4>What it is not</h4>
+      <ul>
+        <li>OPS Academy is not a cosmetology licensure program. We teach transferable skills, not professional licensure.</li>
+        <li>The Certification is issued by OPS Academy by Knotty Opulence. It is not a government recognized license.</li>
+        <li>If you plan to offer paid services, you are responsible for checking the licensing requirements where you live and work.</li>
+      </ul>
+      <p class="note"><strong>Classes and the Academy:</strong> our individual classes are for students who want to learn one skill without committing to 18 weeks. They end with a certificate of completion and do not count toward Certification hours. If you have taken a class and then enroll in the Academy, you may be eligible for a credit toward your tuition. Ask us when you enroll.</p>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">04</span> How training works</summary>
+    <div class="sec-body">
+      <p>You train 3 days a week, up to 4 hours a day, for 18 weeks. Every skill moves from demonstration to mannequin practice before you work on a live model.</p>
+      <ol class="steps">
+        <li><strong>Learn:</strong> context and theory for each technique, and why it matters.</li>
+        <li><strong>Watch:</strong> Nay demonstrates slowly, from more than one angle, and shows common errors.</li>
+        <li><strong>Practice:</strong> guided mannequin work with one correction at a time.</li>
+        <li><strong>Model work:</strong> supervised work on adult and child models, only after you pass the safety gate.</li>
+        <li><strong>Assess:</strong> knowledge checks and practical assessments throughout, with a capstone in week 18.</li>
+      </ol>
+      <h4>Your training week</h4>
+      <div class="days">
+        <div><b>Day 1</b><span>Context and theory, first demonstration, guided practice, reflection and cleanup</span></div>
+        <div><b>Day 2</b><span>Review, second demonstration, practice lab, feedback and cleanup</span></div>
+        <div><b>Day 3</b><span>Third demonstration, applied practice or assessment, critique, records and sanitation</span></div>
+      </div>
+      <p>You record every training day in your Crown Keeper Training Planner, and Nay signs it. Client observation is recorded separately and does not count toward your 216 scheduled hours.</p>
+      <p class="note"><strong>Working with models:</strong> mannequin work always comes first. Live model work begins only after you pass the safety gate: hand hygiene, tool sanitation, consultation and consent, tension awareness, and knowing when to stop. Child models require guardian consent, the child's own agreement, direct supervision, and breaks.</p>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">05</span> Curriculum: 7 units</summary>
+    <div class="sec-body">
+      <ol class="units">
+        <li><span class="u-wk">Weeks 1 to 2 · 24 hrs</span><b>Foundations of the Crown</b><span>Ancestry and professional identity, hair and scalp science, sanitation and safe preparation</span></li>
+        <li><span class="u-wk">Weeks 3 to 4 · 24 hrs</span><b>Loose Natural Hair Care</b><span>Cleansing, detangling, braids and twists without extensions</span></li>
+        <li><span class="u-wk">Weeks 5 to 7 · 36 hrs</span><b>Children's Crown Care</b><span>Child centered consultation, gentle styling, supervised child model practice</span></li>
+        <li><span class="u-wk">Weeks 8 to 10 · 36 hrs</span><b>Extension Braiding</b><span>Extension preparation and safety, installation, protective style completion</span></li>
+        <li><span class="u-wk">Weeks 11 to 12 · 24 hrs</span><b>Sew Ins and Weft Techniques</b><span>Braid downs, installation, finishing, care and removal</span></li>
+        <li><span class="u-wk">Weeks 13 to 15 · 36 hrs</span><b>Loc Craft</b><span>Loc foundations and starters, maintenance methods, assessment and troubleshooting</span></li>
+        <li><span class="u-wk">Weeks 16 to 18 · 36 hrs</span><b>Professional Practice</b><span>Consultations and records, booking, pricing and policies, capstone and transition</span></li>
+      </ol>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">06</span> Tuition and payment</summary>
+    <div class="sec-body">
+      <p>Founding cohort tuition is <strong>$3,000 USD</strong> on a payment plan, or <strong>$2,750 USD</strong> when paid in full. This founding rate is offered to the first cohort only.</p>
+      <div class="plans">
+        <div class="plan"><h5>Pay in full</h5><p class="amt">$2,750</p><p>One payment. Payment details sent when your seat is confirmed.</p></div>
+        <div class="plan feat"><h5>Monthly plan</h5><p class="amt">$3,000</p><p>$500 deposit, then 4 automatic monthly payments of $625, finished by week 16.</p><a class="btn btn-gold" href="https://buy.stripe.com/14A7sK0BV3LLgoj3N26Zy0b" target="_blank" rel="noopener">Monthly plan</a></div>
+        <div class="plan"><h5>Weekly plan</h5><p class="amt">$3,060</p><p>$500 deposit, then 16 automatic weekly payments of $160, finished by week 16.</p><a class="btn" href="https://buy.stripe.com/5kQaEW5Wf0zzb3Z5Va6Zy0a" target="_blank" rel="noopener">Weekly plan</a></div>
+      </div>
+      <p class="note">Start your monthly or weekly plan on your first day of class. The first payment is charged when you sign up, and payments stop on their own after the last one.</p>
+      <ul>
+        <li><strong>Enrollment deposit:</strong> $500 holds your seat, counts toward tuition, and is not refundable.</li>
+        <li><strong>Payment methods:</strong> plans are charged automatically by card through Stripe. Pay in full by Stripe, Zelle, Revolut, or Wise.</li>
+        <li><strong>Failed payments:</strong> if a card is declined, Stripe will retry it and email you to update your card.</li>
+        <li><strong>Missed payments:</strong> a payment more than 7 days late pauses your participation until your account is current.</li>
+        <li><strong>Paid in full by graduation:</strong> tuition must be paid in full before your Certification is issued.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">07</span> Student kit</summary>
+    <div class="sec-body">
+      <div class="plans two">
+        <div class="plan"><h5>Kit List</h5><p class="amt">Included</p><p>A full list of tools and mannequin heads, with options on Amazon México or Amazon US. You purchase everything yourself before your first session.</p></div>
+        <div class="plan feat"><h5>Concierge Kit</h5><p class="amt">$450</p><p>Everything sourced, prepped, and waiting at your station on day one, including MOIST Hydrating Mist and NOURISH Daily Oil from Knotty Opulence Botanicals.</p></div>
+      </div>
+      <p class="note">Concierge Kits must be paid at least 3 weeks before the start date. The Concierge Kit is optional. Either way, every student starts with the same tools.</p>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">08</span> Residency options</summary>
+    <div class="sec-body">
+      <p>Coming from outside Mérida? Live on the Ixchel-Balam Sanctuary Campus for your 18 weeks, steps from the studio.</p>
+      <div class="plans">
+        <div class="plan feat"><h5>Private Cottage Residency</h5><p class="amt">$8,000</p><p>Tuition plus the whole cottage for 18 weeks, with a queen bed. Housing portion: $5,000.</p></div>
+        <div class="plan"><h5>Come With Your Person</h5><p class="amt">$6,000</p><p>Main guest: tuition plus the queen bed in a shared cottage. Housing portion: $3,000.</p></div>
+        <div class="plan"><h5>Come With Your Person</h5><p class="amt">$5,000</p><p>Second guest: tuition plus a traditional Yucatecan hammock or rolling cot in the second room, your choice. Housing portion: $2,000.</p></div>
+      </div>
+      <ul>
+        <li><strong>Shared stays:</strong> offered only to two people who already know each other, such as sisters, friends, partners, or a mother and daughter.</li>
+        <li><strong>Academy only:</strong> $3,000 tuition, and we share a Mérida housing guide to help you find your own place.</li>
+        <li><strong>Housing payments:</strong> housing is paid separately from tuition, with its own deposit and payment schedule.</li>
+        <li><strong>Housing agreement:</strong> residency students sign a short agreement covering move in and move out dates, house rules, cleaning, guests, and early departure.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">09</span> Attendance, cancellations, and recordings</summary>
+    <div class="sec-body">
+      <p><strong>All tuition payments are final. Refunds are given only if OPS Academy cancels.</strong></p>
+      <h4>Attendance and assessment</h4>
+      <ul>
+        <li>To earn your Certification, complete at least 90% of the 216 scheduled hours, pass knowledge checks at 80%, pass practical assessments at 85%, and pass every critical safety criterion.</li>
+        <li>Any critical safety failure pauses your live model work until you are retaught and reassessed.</li>
+        <li>Reschedule a session at no cost with at least 48 hours notice. With less notice, or if you do not attend, that session counts as used.</li>
+      </ul>
+      <h4>If you need to withdraw</h4>
+      <ul>
+        <li>Tuition is not refunded, and the $500 deposit is not refundable.</li>
+        <li>You may transfer once to the next cohort and continue where you left off.</li>
+      </ul>
+      <h4>If we cancel</h4>
+      <ul>
+        <li>If OPS Academy cancels or reschedules a session, you choose a full refund for that session or a new date.</li>
+        <li>For events outside anyone's control, such as storms, hurricane season, or emergencies, the session is rescheduled at no cost to you.</li>
+      </ul>
+      <h4>Recordings</h4>
+      <ul>
+        <li>Most lessons are recorded and shared with you to review at your own pace.</li>
+        <li>A recording does not replace hands on hours, and live questions and feedback from a missed session cannot be made up.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="sec">
+    <summary><span class="n">10</span> Founding cohort commitments</summary>
+    <div class="sec-body">
+      <p>As a founding student, you help shape OPS Academy for every student who comes after you. In return for the founding rate, you agree to:</p>
+      <ul>
+        <li>Share honest feedback at the midpoint and at the end of the program</li>
+        <li>Provide a written or video testimonial if you are happy with your experience</li>
+        <li>Allow photos of your work, and of you at work, to be used by Knotty Opulence and OPS Academy. You may ask that your face not be shown.</li>
+      </ul>
+    </div>
+  </details>
+</main>
+
+<section class="enroll" id="enroll">
+  <div class="enroll-inner">
+    <h2>Enrollment form</h2>
+    <p class="enroll-lead">Complete the form below. When you tap send, your answers open in WhatsApp, ready to send to Nay. Seats are held in the order deposits are received.</p>
+
+    <form id="enrollForm" novalidate>
+      <div class="field-grid">
+        <label>Full name<input name="name" required autocomplete="name"></label>
+        <label>WhatsApp number<input name="whatsapp" required inputmode="tel" autocomplete="tel"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label>City and country where you live<input name="location" required></label>
+      </div>
+      <label>Your hair experience so far
+        <select name="experience" required>
+          <option value="">Choose one</option>
+          <option>None yet</option>
+          <option>My own hair</option>
+          <option>Family and friends</option>
+          <option>Paid clients</option>
+        </select>
+      </label>
+      <label>Have you taken an OPS Academy class? Which one?<input name="classes" placeholder="Optional"></label>
+      <label>What do you want to do with this training?<textarea name="goal" rows="3" required></textarea></label>
+      <label>Days and times you are available to train each week<textarea name="availability" rows="2" required placeholder="For example: Tuesday to Thursday, 10 am to 2 pm"></textarea></label>
+      <div class="field-grid">
+        <label>Payment option
+          <select name="payment" required>
+            <option value="">Choose one</option>
+            <option>Pay in full ($2,750)</option>
+            <option>Monthly plan ($3,000)</option>
+            <option>Weekly plan ($3,060)</option>
+          </select>
+        </label>
+        <label>Kit option
+          <select name="kit" required>
+            <option value="">Choose one</option>
+            <option>Kit List (included)</option>
+            <option>Concierge Kit ($450)</option>
+          </select>
+        </label>
+      </div>
+      <label>Housing option
+        <select name="housing" required>
+          <option value="">Choose one</option>
+          <option>Academy only, I have my own housing ($3,000 total)</option>
+          <option>Private Cottage Residency ($8,000 total)</option>
+          <option>Come With Your Person, main guest ($6,000 total)</option>
+          <option>Come With Your Person, second guest ($5,000 total)</option>
+        </select>
+      </label>
+      <label>If sharing, who are you coming with?<input name="partner" placeholder="Optional: their name"></label>
+      <label>Anything we should know to support you<textarea name="support" rows="2" placeholder="Optional: accessibility needs, schedule notes, questions"></textarea></label>
+
+      <fieldset class="ack">
+        <legend>Student acknowledgment</legend>
+        <label class="check"><input type="checkbox" name="a1" required> I have read this enrollment packet in full.</label>
+        <label class="check"><input type="checkbox" name="a2" required> I understand that OPS Academy is not a cosmetology licensure program, and that the Certification is not a government recognized license.</label>
+        <label class="check"><input type="checkbox" name="a3" required> I understand that all tuition payments are final and that the $500 deposit is not refundable.</label>
+        <label class="check"><input type="checkbox" name="a4" required> I agree to the attendance, cancellation, and recording terms.</label>
+        <label class="check"><input type="checkbox" name="a5" required> I agree to the founding cohort commitments.</label>
+      </fieldset>
+
+      <div class="field-grid">
+        <label>Type your full name as your signature<input name="signature" required class="sig-input"></label>
+        <label>Parent or guardian name, if you are under 18<input name="guardian" placeholder="Optional"></label>
+      </div>
+
+      <p class="form-error" id="formError" role="alert" hidden>Please complete every required field and check each acknowledgment.</p>
+      <button type="submit" class="btn btn-big">Send my enrollment on WhatsApp</button>
+    </form>
+
+    <div class="next-step" id="nextStep" hidden>
+      <h3>Almost there</h3>
+      <p>Send the WhatsApp message that just opened. Then hold your seat with your $500 deposit.</p>
+      <a class="btn btn-gold btn-big" href="https://buy.stripe.com/8x214mesLcihegb2IY6Zy09" target="_blank" rel="noopener">Pay my $500 deposit</a>
+      <p class="small">WhatsApp did not open? <a href="#" id="waRetry">Tap here to try again.</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <span class="footer-logo">Knotty <em>Opulence</em></span>
+  <span class="footer-sub">Hair Care Studio, Mérida, Yucatán</span>
+  <ul class="footer-links">
+    <li><a href="index.html#about">About Nay</a></li>
+    <li><a href="services-hub.html">Services</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="https://knottyophcs.glossgenius.com/" target="_blank" rel="noopener">Book Now</a></li>
+    <li><a href="shop.html">Botanicals Shop</a></li>
+    <li><a href="https://www.instagram.com/knottyop_hc" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/share/1BHbzySHJd/" target="_blank" rel="noopener">Facebook</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 Knotty Opulence Hair Care Studio. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleDrawer() { document.getElementById('mobileDrawer').classList.toggle('open'); }
+  var form = document.getElementById('enrollForm'), err = document.getElementById('formError'), waUrl = '';
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function (el) {
+      var bad = el.type === 'checkbox' ? !el.checked : !el.value.trim();
+      if (el.type === 'email' && el.value && !/^\S+@\S+\.\S+$/.test(el.value)) bad = true;
+      el.classList.toggle('invalid', bad);
+      if (bad) ok = false;
+    });
+    err.hidden = ok;
+    if (!ok) { err.scrollIntoView({behavior: 'smooth', block: 'center'}); return; }
+    var f = form.elements, v = function (n) { return (f[n].value || '').trim() || 'None'; };
+    var msg = [
+      'OPS ACADEMY FOUNDING COHORT ENROLLMENT',
+      '',
+      'Name: ' + v('name'),
+      'WhatsApp: ' + v('whatsapp'),
+      'Email: ' + v('email'),
+      'Lives in: ' + v('location'),
+      'Hair experience: ' + v('experience'),
+      'OPS classes taken: ' + v('classes'),
+      'Goal: ' + v('goal'),
+      'Availability: ' + v('availability'),
+      'Payment option: ' + v('payment'),
+      'Kit option: ' + v('kit'),
+      'Housing: ' + v('housing'),
+      'Sharing with: ' + v('partner'),
+      'Support notes: ' + v('support'),
+      '',
+      'Acknowledgment: I have read the enrollment packet; I understand OPS Academy is not a cosmetology licensure program and the Certification is not a government recognized license; I understand tuition is final and the $500 deposit is not refundable; I agree to the attendance, cancellation, and recording terms and the founding cohort commitments.',
+      '',
+      'Signed: ' + v('signature'),
+      'Guardian: ' + v('guardian'),
+      'Date: ' + new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})
+    ].join('\n');
+    waUrl = 'https://wa.me/529902807480?text=' + encodeURIComponent(msg);
+    window.open(waUrl, '_blank', 'noopener');
+    form.hidden = true;
+    var ns = document.getElementById('nextStep'); ns.hidden = false; ns.scrollIntoView({behavior: 'smooth', block: 'center'});
+  });
+  form.addEventListener('input', function (e) { e.target.classList.remove('invalid'); });
+  document.getElementById('waRetry').addEventListener('click', function (e) { e.preventDefault(); if (waUrl) window.open(waUrl, '_blank', 'noopener'); });
+</script>
+</body>
+</html>
